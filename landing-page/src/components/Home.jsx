@@ -1,7 +1,7 @@
 import React from 'react'
 import {HiArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-scroll'
-import Laura from '../assets/laura.jpg'
+import Laura from '../assets/laura-round.png'
 
 function Home() {
   return (
@@ -25,7 +25,7 @@ function Home() {
                     </div>
                 </div>
                 <div className='ml-[5%] w-[100%] h-[100%] md:h-[75%]'>
-                    <img className='md:h-[100%]' src={Laura} alt="Laura Rugh" />
+                    <img className='rounded-full md:h-[100%]' src={Laura} alt="Laura Rugh" />
                 </div>
             </div>
         </div>
