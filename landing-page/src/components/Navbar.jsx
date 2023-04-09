@@ -58,6 +58,14 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
+                            <Link to="samples" smooth={true} duration={500}>Color Samples</Link>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                            href="#"
+                            data-te-dropdown-item-ref>
                             Color Schemes
                         </a>
                     </li>
@@ -69,19 +77,9 @@ function Navbar() {
                             Color Review
                         </a>
                     </li>
-                    <li>
-                        <a
-                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="#"
-                            data-te-dropdown-item-ref>
-                            Color Samples
-                        </a>
-                    </li>
                 </ul>
             </li>
-            {/* <li>Color Schemes</li>
-            <li>Color Review</li>
-            <li>Paint Samples</li> */}
+            <li>eDesign</li>
             <li>Portfolio</li>
         </ul>
 
@@ -94,9 +92,10 @@ function Navbar() {
         <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center bg-[#676766] text-white'}>
             <li className='py-6 text-4xl'><Link onClick={handleClick} to="home" smooth={true} duration={500}>Home</Link></li>
             <li className='py-6 text-4xl'><Link onClick={handleClick} to="consult" smooth={true} duration={500}>Color Consultation</Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="samples" smooth={true} duration={500}>Color Samples</Link></li>
             <li className='py-6 text-4xl'>Color Schemes</li>
             <li className='py-6 text-4xl'>Color Review</li>
-            <li className='py-6 text-4xl'>Paint Samples</li>
+            <li className='py-6 text-4xl'>eDesign</li>
             <li className='py-6 text-4xl'>Portfolio</li>
         </ul>
     </div>

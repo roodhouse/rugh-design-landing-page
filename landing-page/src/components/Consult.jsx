@@ -5,12 +5,15 @@ function Consult() {
   return (
     <div name='consult' className='w-full h-screen'>
         <div className='max-w-[1000px] mx-auto p-4 flex flex-row justify-center w-full h-full'>
-            <div className='max-w-[75%]'>
+            <div className='max-w-[50%]'>
                 <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1]'>Color Consultation</p>
-                <p className='py-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className='py-4'>Hire me to be your color consultant! By assessing the current undertones in your home, I can find the color or color palette that will make the biggest impact on your space.</p>
+                <button type="button" class="text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white">
+                    <a href='https://www.rughdesign.com/product/interior-color-consultation/' target='_blank'>Hire me!</a>
+                </button>
             </div>
-            <div className='max-w-[25%]'>
-                <img src={Interior} alt="Interior Color Consultation" />
+            <div className='max-w-[50%]'>
+                <img className='mx-[25%] max-w-[50%]' src={Interior} alt="Interior Color Consultation" />
             </div>
         </div>
     </div>
