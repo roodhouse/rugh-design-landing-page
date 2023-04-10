@@ -7,17 +7,28 @@ import Work from './components/Work';
 import Review from './components/Review';
 import Samples from './components/Samples';
 import Footer from './components/Footer';
+import { Routes, Route } from 'react-router-dom';
+import Portfolio from './components/Portfolio';
 
 function App() {
   return (
-    <div className="">
+    <div>
       <Navbar />
-      <Home />
-      <Consult />
-      <Samples />
-      <Review />
-      <Edesign />
-      <Work />
+      <Routes>
+        <Route path='/' element={
+          [
+            <Home />, 
+            <Consult />, 
+            <Samples />,
+            <Review />,
+            <Edesign />,
+            <Work />
+          ]
+        }/>
+      </Routes>
+      <Routes>
+        <Route path='/portfolio' element={<Portfolio />} />
+      </Routes>
       <Footer />
     </div>
   );
