@@ -4,7 +4,7 @@ import { CiMail } from "react-icons/ci";
 
 function Footer() {
   return (
-    <div className='w-full h-full pt-60 sm:pt-0'>
+    <div className='w-full h-full pt-60'>
         <div className='block items-center bg-[#676766] w-full h-full'>
         <div className='pt-9 flex justify-center'>
             <div className='mb-9 w-[50%] flex justify-evenly'>

@@ -17,7 +17,7 @@ const slides = images.map(({ original, width, height }) => ({
     height,
   }));
 
-function Portfolio() {
+function Work() {
 
     const [index, setIndex] = useState(-1);
     const handleClick = (index: number, item: CustomImage) => setIndex(index);
@@ -51,7 +51,7 @@ function Portfolio() {
                     <img className='max-w-[100%] sm:max-w-[25%] h-fit border-2 border-[#E5C1C1]' src={PortSix} alt="Front porch" />
                 </div>
                 <div className='flex flex-row justify-center w-full'>
-                <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='' target='_blank'>View More</a>
+                <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='https://www.rughdesign.com/portfolio/'>View More</a>
                 </div>
             </div>
         </div>
@@ -59,4 +59,4 @@ function Portfolio() {
   )
 }
 
-export default Portfolio
+export default Work
