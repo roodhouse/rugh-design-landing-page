@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Work from './components/Work';
 import Review from './components/Review';
 import Samples from './components/Samples';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Review />
       <Edesign />
       <Work />
+      <Footer />
     </div>
   );
 }
