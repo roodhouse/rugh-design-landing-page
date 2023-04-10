@@ -11,31 +11,9 @@ import PortFour from '../assets/port-four.png'
 import PortFive from '../assets/port-five.png'
 import PortSix from '../assets/port-six.png'
 
-const slides = images.map(({ original, width, height }) => ({
-    src: original,
-    width,
-    height,
-  }));
 
 function Work() {
-
-    const [index, setIndex] = useState(-1);
-    const handleClick = (index: number, item: CustomImage) => setIndex(index);
-
-    // <div>
-    //   <Gallery
-    //     images={images}
-    //     onClick={handleClick}
-    //     enableImageSelection={false}
-    //   />
-    //   <Lightbox
-    //     slides={slides}
-    //     open={index >= 0}
-    //     index={index}
-    //     close={() => setIndex(-1)}
-    //   />
-    // </div>
-    
+ 
   return (
     <div name='work' className='w-full h-full'>
         <div className='max-w-[1000px] mx-auto p-4 pt-60 sm:pt-0 flex flex-col sm:flex-row justify-center w-full h-full'>
