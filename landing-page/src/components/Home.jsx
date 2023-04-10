@@ -8,7 +8,7 @@ function Home() {
     <div name='home' className='w-full h-[calc(100vh+150px)]'>
         {/* container */}
         <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
-            <div className='flex flex-row justify-center'>
+            <div className='flex flex-col sm:flex-row justify-center'>
                 <div>
                     <p className='text-[#676766]'>Hey Y'all! My name is</p>
                     <h1 className='text-4xl sm:text-7xl font-bold text-[#E5C1C1]'>Laura Rugh</h1>
@@ -24,7 +24,7 @@ function Home() {
                         </Link>
                     </div>
                 </div>
-                <div className='ml-[5%] w-[100%] h-[100%] md:h-[75%]'>
+                <div className='ml-[5%] w-[100%] h-[100%] md:h-[75%] order-first sm:order-last pb-4 sm:pb-0'>
                     <img className='rounded-full md:h-[100%]' src={Laura} alt="Laura Rugh" />
                 </div>
             </div>

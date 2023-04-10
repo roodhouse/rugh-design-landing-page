@@ -7,17 +7,17 @@ import PeelFour from '../assets/peel-four.png'
 function Samples() {
   return (
     <div name='samples' className='w-full h-screen'>
-        <div className='max-w-[1000px] mx-auto p-4 flex flex-row justify-center w-full h-full'>
-            <div className='max-w-[50%]'>
-                <div className='flex flex-row flex-wrap gap-1'>
+        <div className='max-w-[1000px] mx-auto p-4 flex flex-col sm:flex-row justify-center w-full h-full'>
+            <div className='max-w-[100%] sm:max-w-[50%]'>
+                <div className='flex flex-row flex-wrap gap-1 justify-center sm:justify-normal'>
                     <img className='max-w-[45%] border-2 border-[#E5C1C1]' src={PeelOne} alt="Peel and Stick paint sample" />
                     <img className='max-w-[45%] border-2 border-[#E5C1C1]' src={PeelTwo} alt="Peel and Stick paint sample" />
                     <img className='max-w-[45%] border-2 border-[#E5C1C1]' src={PeelThree} alt="Peel and Stick paint sample" />
                     <img className='max-w-[45%] border-2 border-[#E5C1C1]' src={PeelFour} alt="Peel and Stick paint sample" />
                 </div>
             </div>
-            <div className='max-w-[50%] text-right flex flex-col items-end'>
-                <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1]'>Color Samples</p>
+            <div className='max-w-[100%] sm:max-w-[50%] text-center sm:text-right flex flex-col items-center sm:items-end'>
+                <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1] pt-4 sm:pt-0'>Color Samples</p>
                 <p className='py-4'>Our 12" x 12" peel and stick paint samples are painted with 2 coats of Sherwin-Williams or Benjamin Moore paint in a satin finish.</p>
                 <p className='py-4'>See the true paint color on your walls while saving time, money and effort.</p>
                 <p className='py-4'>Compare colors instantly to make the best choice for your space.</p>
