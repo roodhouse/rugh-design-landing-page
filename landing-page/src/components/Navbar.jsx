@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Logo from '../assets/RD.svg'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import {Link} from 'react-scroll'
+import { Route, Routes, Link as NewLink } from "react-router-dom"
 
 function Navbar() {
     const [nav, setNav] = useState(false)
@@ -16,7 +17,7 @@ function Navbar() {
 
         {/* menu */}
         <ul className='hidden md:flex'>
-            <li><Link to="home" smooth={true} duration={500}>Home</Link></li>
+            <li><a href='#'><Link to="home" smooth={true} duration={500}><NewLink to='/'>Home</NewLink></Link></a></li>
             <li className="relative" data-te-dropdown-ref>
                 <a
                     className="flex items-center whitespace-nowrap motion-reduce:transition-none"
@@ -48,9 +49,9 @@ function Navbar() {
                     <li>
                         <a
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="#"
+                            href="/"
                             data-te-dropdown-item-ref>
-                            <Link to="consult" smooth={true} duration={500}>Color Consultation</Link>
+                            <Link to="consult" smooth={true} duration={500}><NewLink to='/'>Color Consultation</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -58,7 +59,7 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="samples" smooth={true} duration={500}>Color Samples</Link>
+                            <Link to="samples" smooth={true} duration={500}><NewLink to='/'>Color Samples</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -66,7 +67,7 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="scheme" smooth={true} duration={500}>Color Schemes</Link>
+                            <Link to="scheme" smooth={true} duration={500}><NewLink to='/'>Color Schemes</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -74,13 +75,13 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="review" smooth={true} duration={500}>Color Review</Link>
+                            <Link to="review" smooth={true} duration={500}><NewLink to='/'>Color Review</NewLink></Link>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li><Link to="edesign" smooth={true} duration={500}>eDesign</Link></li>
-            <li><Link to="work" smooth={true} duration={500}>Portfolio</Link></li>
+            <li><Link to="edesign" smooth={true} duration={500}><NewLink to='/'>eDesign</NewLink></Link></li>
+            <li><Link to="work" smooth={true} duration={500}><NewLink to='/'>Portfolio</NewLink></Link></li>
         </ul>
 
         {/* hamburger */}
@@ -90,13 +91,13 @@ function Navbar() {
 
         {/* mobile menu */}
         <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center bg-[#676766] text-white'}>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="home" smooth={true} duration={500}>Home</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="consult" smooth={true} duration={500}>Color Consultation</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="samples" smooth={true} duration={500}>Color Samples</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="scheme" smooth={true} duration={500}>Color Schemes</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="review" smooth={true} duration={500}>Color Review</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="edesign" smooth={true} duration={500}>eDesign</Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="work" smooth={true} duration={500}>Portfolio</Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="home" smooth={true} duration={500}><NewLink to='/'>Home</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="consult" smooth={true} duration={500}><NewLink to='/'>Color Consultation</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="samples" smooth={true} duration={500}><NewLink to='/'>Color Samples</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="scheme" smooth={true} duration={500}><NewLink to='/'>Color Schemes</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="review" smooth={true} duration={500}><NewLink to='/'>Color Review</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="edesign" smooth={true} duration={500}><NewLink to='/'>eDesign</NewLink></Link></li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="work" smooth={true} duration={500}><NewLink to='/'>Portfolio</NewLink></Link></li>
         </ul>
     </div>
   )

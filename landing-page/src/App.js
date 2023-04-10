@@ -14,21 +14,21 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path='/' element={
-          [
-            <Home />, 
-            <Consult />, 
-            <Samples />,
-            <Review />,
-            <Edesign />,
-            <Work />
-          ]
-        }/>
-      </Routes>
-      <Routes>
-        <Route path='/portfolio' element={<Portfolio />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={
+            [
+              <Home />, 
+              <Consult />, 
+              <Samples />,
+              <Review />,
+              <Edesign />,
+              <Work />
+            ]
+          }/>
+        </Routes>
+        <Routes>
+          <Route path='/portfolio' element={<Portfolio />} />
+        </Routes>
       <Footer />
     </div>
   );
