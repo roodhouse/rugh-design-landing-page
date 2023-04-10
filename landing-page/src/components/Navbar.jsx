@@ -80,7 +80,7 @@ function Navbar() {
                 </ul>
             </li>
             <li><Link to="edesign" smooth={true} duration={500}>eDesign</Link></li>
-            <li>Portfolio</li>
+            <li><Link to="work" smooth={true} duration={500}>Portfolio</Link></li>
         </ul>
 
         {/* hamburger */}
@@ -96,7 +96,7 @@ function Navbar() {
             <li className='py-6 text-4xl'><Link onClick={handleClick} to="scheme" smooth={true} duration={500}>Color Schemes</Link></li>
             <li className='py-6 text-4xl'><Link onClick={handleClick} to="review" smooth={true} duration={500}>Color Review</Link></li>
             <li className='py-6 text-4xl'><Link onClick={handleClick} to="edesign" smooth={true} duration={500}>eDesign</Link></li>
-            <li className='py-6 text-4xl'>Portfolio</li>
+            <li className='py-6 text-4xl'><Link onClick={handleClick} to="work" smooth={true} duration={500}>Portfolio</Link></li>
         </ul>
     </div>
   )

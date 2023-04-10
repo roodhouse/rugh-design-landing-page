@@ -3,7 +3,7 @@ import Consult from './components/Consult';
 import Edesign from './components/Edesign';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Portfolio from './components/Portfolio';
+import Work from './components/Work';
 import Review from './components/Review';
 import Samples from './components/Samples';
 
@@ -16,7 +16,7 @@ function App() {
       <Samples />
       <Review />
       <Edesign />
-      <Portfolio />
+      <Work />
     </div>
   );
 }
