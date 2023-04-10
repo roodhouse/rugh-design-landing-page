@@ -5,17 +5,17 @@ import { CiMail } from "react-icons/ci";
 function Footer() {
   return (
     <div className='w-full h-full'>
-        <div className='block items-center bg-white w-full h-full'>
-        <div className='pt-9'>
-            <div className='mb-9 flex justify-center'>
-                <a href='#' className='mr-9'><FaInstagram /></a>
-                <a href='#' className='mr-9'><FaFacebook /></a>
-                <a href='#' className='mr-9'><FaPinterest /></a>
-                <a href='#' className='mr-9'><CiMail /></a>
+        <div className='block items-center bg-[#676766] w-full h-full'>
+        <div className='pt-9 flex justify-center'>
+            <div className='mb-9 w-[50%] flex justify-evenly'>
+                <a href='#' className=''><FaInstagram size={30} fill={"white"}/></a>
+                <a href='#' className=''><FaFacebook size={30} fill={"white"}/></a>
+                <a href='#' className=''><FaPinterest size={30} fill={"white"}/></a>
+                <a href='#' className=''><CiMail size={30} fill={"white"}/></a>
             </div>
         </div>
         <div className='bg-neutral-300 p-4 text-center text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200'>
-        © 2023 Copyright: <a className='text-neutral-800 dark:text-neutral-400' href='https://roodhouse.github.io/'>roodhouse</a>
+        © 2023 Copyright: Rugh Design | Design by <a className='text-neutral-800 dark:text-white' href='https://roodhouse.github.io/'>roodhouse</a>
         </div>
         </div>
     </div>

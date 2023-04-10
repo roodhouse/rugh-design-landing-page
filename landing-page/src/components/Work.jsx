@@ -37,7 +37,7 @@ function Portfolio() {
     // </div>
     
   return (
-    <div name='work' className='w-full h-screen'>
+    <div name='work' className='w-full h-full'>
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col sm:flex-row justify-center w-full h-full'>
             <div className='max-w-[100%] text-center sm:text-right flex flex-col items-center sm:items-end'>
                 <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1] pt-4 sm:pt-0'>Portfolio</p>
