@@ -9,7 +9,7 @@ function Navbar() {
     const handleClick = () => setNav(!nav)
 
   return (
-    <div className='fixed w-full h-[150px] flex justify-between items-center px-4 bg-white'>
+    <div className='fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10'>
         {/* logo */}
         <div>
             <img className='pt-14' src={Logo} alt="Rugh Design" />
