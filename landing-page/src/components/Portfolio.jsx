@@ -63,26 +63,88 @@ function Portfolio() {
           </div>
         </div>
 
-        <div
-          name="gallery"
-          className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full pt-[15rem]"
-        >
-          <Box sx={{ width: 1000, height: 2200, overflowY: "scroll" }}>
-            <ImageList variant="masonry" cols={4} gap={4}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img}> 
-                <a href={item.img} target='_blank'>
-                  <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                  </a>
-                </ImageListItem>
-              ))}
-            </ImageList>
-          </Box>
+        <div name="gallery">
+
+          {/* ex large screens gallery */}
+          <div className="hidden xl:flex xl:flex-col xl:justify-center max-w-[1000px] mx-auto px-8  h-full pt-[15rem]">
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: 'fit-content', overflowY: "scroll" }}>
+              <ImageList variant="masonry" cols={4} gap={4}>
+                {itemData.map((item) => (
+                  <ImageListItem sx={{marginBottom: '4px', border: 'solid 2px #E5C1C1', padding: '0px'}} key={item.img}> 
+                  <a href={item.img} target='_blank'>
+                    <img
+                      className='w-full'
+                      src={`${item.img}?w=248&fit=crop&auto=format`}
+                      srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.title}
+                      loading="lazy"
+                    />
+                    </a>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </Box>
+          </div>
+          {/* large screens gallery */}
+          <div className="hidden lg:flex lg:flex-col xl:hidden lg:justify-center max-w-[1000px] mx-auto px-8 h-full pt-[15rem]">
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: 'fit-content', overflowY: "scroll" }}>
+              <ImageList variant="masonry" cols={3} gap={4}>
+                {itemData.map((item) => (
+                  <ImageListItem sx={{marginBottom: '4px', border: 'solid 2px #E5C1C1', padding: '0px'}} key={item.img}> 
+                  <a href={item.img} target='_blank'>
+                    <img
+                      className='w-full'
+                      src={`${item.img}?w=248&fit=crop&auto=format`}
+                      srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.title}
+                      loading="lazy"
+                    />
+                    </a>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </Box>
+          </div>
+          {/* med screens gallery */}
+          <div className="hidden lg:hidden md:flex md:flex-col md:justify-center max-w-[1000px] mx-auto px-8 h-full pt-[15rem]">
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: 'fit-content', overflowY: "scroll" }}>
+              <ImageList sx={{maxWidth: '75%'}} variant="masonry" cols={2} gap={4}>
+                {itemData.map((item) => (
+                  <ImageListItem sx={{marginBottom: '4px', border: 'solid 2px #E5C1C1', padding: '0px'}} key={item.img}> 
+                  <a href={item.img} target='_blank'>
+                    <img
+                      className='w-full'
+                      src={`${item.img}?w=248&fit=crop&auto=format`}
+                      srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.title}
+                      loading="lazy"
+                    />
+                    </a>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </Box>
+          </div>
+          {/* sm screens gallery */}
+          <div className="md:hidden flex flex-col justify-center max-w-[1000px] mx-auto px-8 h-full pt-[15rem]">
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: 'fit-content', overflowY: "scroll" }}>
+              <ImageList sx={{maxWidth: '75%'}} variant="masonry" cols={1} gap={4}>
+                {itemData.map((item) => (
+                  <ImageListItem sx={{marginBottom: '4px', border: 'solid 2px #E5C1C1', padding: '0px'}} key={item.img}> 
+                  <a href={item.img} target='_blank'>
+                    <img 
+                      className='w-full'
+                      src={`${item.img}?w=248&fit=crop&auto=format`}
+                      srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={item.title}
+                      loading="lazy"
+                    />
+                    </a>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </Box>
+          </div>
         </div>
       </div>
     </div>
