@@ -5,7 +5,7 @@ import PortThree from '../assets/port-three.png'
 import PortFour from '../assets/port-four.png'
 import PortFive from '../assets/port-five.png'
 import PortSix from '../assets/port-six.png'
-
+import {Link} from 'react-router-dom'
 
 function Work() {
  
@@ -24,7 +24,7 @@ function Work() {
                     <img className='max-w-[75%] sm:max-w-[25%] border-2 border-[#E5C1C1]' src={PortSix} alt="Front porch" />
                 </div>
                 <div className='flex flex-row justify-center w-full'>
-                <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='/portfolio'>View More</a>
+                <Link to={"./portfolio"}><button className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' >View More</button></Link>
                 </div>
             </div>
         </div>
