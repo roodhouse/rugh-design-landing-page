@@ -1,5 +1,4 @@
-import React, {useState} from 'react' 
-import { images, CustomImage} from '../images'
+import React from 'react' 
 import {HiArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-scroll'
 import Laura from '../assets/laura-again.jpg'
@@ -26,14 +25,14 @@ function Portfolio() {
               </h2>
               <p className="text-[#676766] py-4 max-w-[700px]">
                 Check out some of my work below. Be sure to reach out if you are
-                in need of a{" "}
+                in need of a
                 <a
                   className="underline decoration-[#E5C1C1] decoration-8 hover:decoration-[#676766]"
                   href="https://www.rughdesign.com/product-category/color-consultation/"
                 >
                   color consultation
-                </a>{" "}
-                or{" "}
+                </a>
+                or
                 <a
                   className="underline decoration-[#E5C1C1] decoration-8 hover:decoration-[#676766]"
                   href="https://www.rughdesign.com/product-category/edesign/"

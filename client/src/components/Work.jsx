@@ -1,4 +1,4 @@
-import React, {useState} from 'react' 
+import React from 'react' 
 import PortOne from '../assets/port-one.png'
 import PortTwo from '../assets/port-two.png'
 import PortThree from '../assets/port-three.png'
