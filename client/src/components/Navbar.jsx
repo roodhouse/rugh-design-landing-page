@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Logo from '../assets/RD.svg'
 import {FaBars, FaTimes} from 'react-icons/fa'
-import {Link} from 'react-scroll'
-import { Route, Routes, Link as NewLink } from "react-router-dom"
+import { Link as NewLink } from "react-router-dom"
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 function Navbar() {
     const [nav, setNav] = useState(false)
@@ -11,13 +11,13 @@ function Navbar() {
   return (
     <div className='fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10'>
         {/* logo */}
-        <div>
+        <div classname='cursor-grab' onClick={()=> scroll.scrollToTop()}>
             <img className='pt-14' src={Logo} alt="Rugh Design" />
         </div>
 
         {/* menu */}
         <ul className='hidden md:flex'>
-            <li><a href='#'><Link to="home" smooth={true} duration={500}><NewLink to='/'>Home</NewLink></Link></a></li>
+            <li><a href='#'><Link to="home" smooth={true} duration={1000}><NewLink to='/'>Home</NewLink></Link></a></li>
             <li className="relative" data-te-dropdown-ref>
                 <a
                     className="flex items-center whitespace-nowrap motion-reduce:transition-none"
@@ -51,7 +51,7 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="/"
                             data-te-dropdown-item-ref>
-                            <Link to="consult" smooth={true} duration={500 } offset={-250}><NewLink to='/'>Color Consultation</NewLink></Link>
+                            <Link to="consult" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Consultation</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -59,7 +59,7 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="samples" smooth={true} duration={500} offset={-250}><NewLink to='/'>Color Samples</NewLink></Link>
+                            <Link to="samples" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Samples</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -67,7 +67,7 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="scheme" smooth={true} duration={500} offset={-250}><NewLink to='/'>Color Schemes</NewLink></Link>
+                            <Link to="scheme" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Schemes</NewLink></Link>
                         </a>
                     </li>
                     <li>
@@ -75,13 +75,13 @@ function Navbar() {
                             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="#"
                             data-te-dropdown-item-ref>
-                            <Link to="review" smooth={true} duration={500} offset={-250}><NewLink to='/'>Color Review</NewLink></Link>
+                            <Link to="review" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Review</NewLink></Link>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li><Link to="edesign" smooth={true} duration={500}><NewLink to='/'>eDesign</NewLink></Link></li>
-            <li><Link to="work" smooth={true} duration={500} offset={-250}><NewLink to='/'>Portfolio</NewLink></Link></li>
+            <li><Link to="edesign" smooth={true} duration={1000}><NewLink to='/'>eDesign</NewLink></Link></li>
+            <li><Link to="work" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Portfolio</NewLink></Link></li>
         </ul>
 
         {/* hamburger */}

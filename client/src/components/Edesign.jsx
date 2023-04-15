@@ -1,9 +1,11 @@
 import React from 'react'
 import EdesignIcon from '../assets/edesign.png'
+import { Element } from 'react-scroll'
 
 function Edesign() {
   return (
-    <div name='edesign' className='w-full h-screen'>
+    <div id='edesign' name='edesign' className='w-full h-screen'>
+      <Element name='myScrollToElement'></Element>
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col sm:flex-row sm:justify-center items-center w-full h-full pt-60 sm:pt-0'>
             <div className='max-w-[100] sm:max-w-[50%] text-center sm:text-left flex flex-col items-center sm:items-start'>
                 <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1]'>eDesign</p>
