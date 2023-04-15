@@ -15,7 +15,7 @@ function Home() {
                     <h2 className='text-4xl sm:text-7xl font-bold text-[#676766]'>I'm a Color Consultant.</h2>
                     <p className='text-[#676766] py-4 max-w-[700px]'>I have a passion for design, color and helping people find the perfect paint for their spaces. Enjoy and let me know how I can help!</p>
                     <div>
-                        <Link to="consult" smooth={true} duration={500}>
+                        <Link to="consult" smooth={true} duration={500} offset={-250}>
                         <button className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white'>Learn More
                             <span className='group-hover:rotate-90 duration-300'>
                             <HiArrowNarrowRight className='ml-3' />
