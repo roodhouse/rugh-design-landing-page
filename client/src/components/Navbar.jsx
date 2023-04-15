@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div className='fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10'>
         {/* logo */}
-        <div classname='cursor-grab' onClick={()=> scroll.scrollToTop()}>
+        <div onClick={()=> scroll.scrollToTop()}>
             <img className='pt-14' src={Logo} alt="Rugh Design" />
         </div>
 
