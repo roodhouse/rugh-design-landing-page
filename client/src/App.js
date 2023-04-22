@@ -11,7 +11,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ScrollRestoration } from 'react-router-dom';
 import Portfolio from './components/Portfolio';
 
-function App() {
+function App() { 
   return (
     <div>
       <ScrollRestoration />
