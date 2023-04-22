@@ -9,7 +9,6 @@ import Samples from './components/Samples';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import { ScrollRestoration } from 'react-router-dom';
-import Portfolio from './components/Portfolio';
 
 function App() { 
   return (
@@ -27,9 +26,6 @@ function App() {
               <Work />
             ]
           }/>
-        </Routes>
-        <Routes>
-          <Route path='/portfolio' element={<Portfolio />} />
         </Routes>
       <Footer />
     </div>
