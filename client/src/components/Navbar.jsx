@@ -1,106 +1,282 @@
-import React, {useState} from 'react'
-import Logo from '../assets/RD.svg'
-import {FaBars, FaTimes} from 'react-icons/fa'
-import { Link as NewLink } from "react-router-dom"
+import * as React from 'react';
+import { useState } from 'react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Logo from '../assets/RD.svg';
+import {FaBars, FaTimes} from 'react-icons/fa';
+import { AiOutlineDown } from 'react-icons/ai';
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 function Navbar() {
-    const [nav, setNav] = useState(false)
-    const handleClick = () => setNav(!nav)
+  const [nav, setNav] = useState(false);
+  const handleClick = () => setNav(!nav);
+
+  // color menu item state
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleColor = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <div className='fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10'>
-        {/* logo */}
-        <div onClick={()=> scroll.scrollToTop()}>
-            <img className='pt-14' src={Logo} alt="Rugh Design" />
-        </div>
+    <div className="fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10">
+      {/* logo */}
+      <div onClick={() => scroll.scrollToTop()}>
+        <img src={Logo} alt="Rugh Design" />
+      </div>
 
-        {/* menu */}
-        <ul className='hidden md:flex'>
-            <li><a href='#'><Link to="home" smooth={true} duration={1000}><NewLink to='/'>Home</NewLink></Link></a></li>
-            <li className="relative" data-te-dropdown-ref>
-                <a
-                    className="flex items-center whitespace-nowrap motion-reduce:transition-none"
-                    href="#"
-                    type="button"
-                    id="dropdownMenuButton2"
-                    data-te-dropdown-toggle-ref
-                    aria-expanded="false"
-                    data-te-ripple-init
-                    data-te-ripple-color="light">
-                    Color
-                        <span className="ml-2 w-2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                className="h-5 w-5">
-                                <path
-                                fill-rule="evenodd"
-                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                </a>
-                <ul
-                    className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-clip-padding text-left text-base shadow-lg bg-[#676766] [&[data-te-dropdown-show]]:block"
-                    aria-labelledby="dropdownMenuButton2"
-                    data-te-dropdown-menu-ref>
-                    <li>
-                        <a
-                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="/"
-                            data-te-dropdown-item-ref>
-                            <Link to="consult" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Consultation</NewLink></Link>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="#"
-                            data-te-dropdown-item-ref>
-                            <Link to="samples" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Samples</NewLink></Link>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="#"
-                            data-te-dropdown-item-ref>
-                            <Link to="scheme" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Schemes</NewLink></Link>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="#"
-                            data-te-dropdown-item-ref>
-                            <Link to="review" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Color Review</NewLink></Link>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li><Link to="edesign" smooth={true} duration={1000}><NewLink to='/'>eDesign</NewLink></Link></li>
-            <li><Link to="work" smooth={true} duration={1000} offset={-250}><NewLink to='/'>Portfolio</NewLink></Link></li>
-        </ul>
+      {/* menu */}
+      <ul className="hidden md:flex">
+        <li>
+          <Button
+            sx={{
+              padding: 0,
+              fontFamily: "Raleway",
+              color: "#000000",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: "normal",
+              "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+            }}
+          >
+            <Link to="home" smooth={true} duration={1000}>
+              Home
+            </Link>
+          </Button>
+        </li>
+        <li>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleColor}
+            sx={{
+              padding: 0,
+              fontFamily: "Raleway",
+              color: "#000000",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: "normal",
+              "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+            }}
+          >
+            Color
+            <span className="ml-2">
+              <AiOutlineDown />
+            </span>
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem
+              onClick={handleClose}
+              sx={{
+                fontFamily: "Raleway",
+                color: "#000000",
+                textTransform: "none",
+                fontSize: "16px",
+                fontWeight: "normal",
+                "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+              }}
+            >
+              <Link to="consult" smooth={true} duration={1000} offset={-250}>
+                Color Consultation
+              </Link>
+            </MenuItem>
+            <MenuItem
+              onClick={handleClose}
+              sx={{
+                fontFamily: "Raleway",
+                color: "#000000",
+                textTransform: "none",
+                fontSize: "16px",
+                fontWeight: "normal",
+                "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+              }}
+            >
+              <Link to="samples" smooth={true} duration={1000} offset={-250}>
+                Color Samples
+              </Link>
+            </MenuItem>
+            <MenuItem
+              onClick={handleClose}
+              sx={{
+                fontFamily: "Raleway",
+                color: "#000000",
+                textTransform: "none",
+                fontSize: "16px",
+                fontWeight: "normal",
+                "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+              }}
+            >
+              <Link to="scheme" smooth={true} duration={1000} offset={-250}>
+                Color Wheel
+              </Link>
+            </MenuItem>
+            <MenuItem
+              onClick={handleClose}
+              sx={{
+                fontFamily: "Raleway",
+                color: "#000000",
+                textTransform: "none",
+                fontSize: "16px",
+                fontWeight: "normal",
+                "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+              }}
+            >
+              <Link to="review" smooth={true} duration={1000} offset={-250}>
+                Color Review
+              </Link>
+            </MenuItem>
+          </Menu>
+        </li>
+        <li>
+          <Button
+            sx={{
+              padding: 0,
+              fontFamily: "Raleway",
+              color: "#000000",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: "normal",
+              "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+            }}
+          >
+            <Link to="edesign" smooth={true} duration={1000}>
+              eDesign
+            </Link>
+          </Button>
+        </li>
+        <li>
+          <Button
+            sx={{
+              padding: 0,
+              fontFamily: "Raleway",
+              color: "#000000",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: "normal",
+              "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
+            }}
+          >
+            <Link to="work" smooth={true} duration={1000} offset={-250}>
+              Portfolio
+            </Link>
+          </Button>
+        </li>
+      </ul>
 
-        {/* hamburger */}
-        <div onClick={handleClick} className={!nav ? 'md:hidden z-10 text-[#676766]' : 'md:hidden z-10 text-white'}>
-            {!nav ? <FaBars /> : <FaTimes />}
-        </div>
+      {/* hamburger */}
+      <div
+        onClick={handleClick}
+        className={
+          !nav ? "md:hidden z-10 text-[#676766]" : "md:hidden z-10 text-white"
+        }
+      >
+        {!nav ? <FaBars /> : <FaTimes />}
+      </div>
 
-        {/* mobile menu */}
-        <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center bg-[#676766] text-white'}>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="home" smooth={true} duration={500}><NewLink to='/'>Home</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="consult" smooth={true} duration={500}><NewLink to='/'>Color Consultation</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="samples" smooth={true} duration={500} ><NewLink to='/'>Color Samples</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="scheme" smooth={true} duration={500} ><NewLink to='/'>Color Schemes</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="review" smooth={true} duration={500} ><NewLink to='/'>Color Review</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="edesign" smooth={true} duration={500}><NewLink to='/'>eDesign</NewLink></Link></li>
-            <li className='py-6 text-4xl'><Link onClick={handleClick} to="work" smooth={true} duration={500} ><NewLink to='/'>Portfolio</NewLink></Link></li>
-        </ul>
+      {/* mobile menu */}
+      <ul
+        className={
+          !nav
+            ? "hidden"
+            : "landscape:hidden absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center bg-[#676766] text-white"
+        }
+      >
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
+            Home
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="consult" smooth={true} duration={500}>
+            Color Consultation
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="samples" smooth={true} duration={500}>
+            Color Samples
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="scheme" smooth={true} duration={500}>
+            Color Schemes
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="review" smooth={true} duration={500}>
+            Color Review
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="edesign" smooth={true} duration={500}>
+            eDesign
+          </Link>
+        </li>
+        <li className="py-6 text-4xl">
+          <Link onClick={handleClick} to="work" smooth={true} duration={500}>
+            Portfolio
+          </Link>
+        </li>
+      </ul>
+      {/* landscape only menu */}
+      <ul
+        className={
+          !nav
+            ? "hidden"
+            : "portrait:hidden absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center bg-[#676766] text-white"
+        }
+      >
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
+            Home
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="consult" smooth={true} duration={500}>
+            Color Consultation
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="samples" smooth={true} duration={500}>
+            Color Samples
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="scheme" smooth={true} duration={500}>
+            Color Schemes
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="review" smooth={true} duration={500}>
+            Color Review
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="edesign" smooth={true} duration={500}>
+            eDesign
+          </Link>
+        </li>
+        <li className="py-1.5 text-2xl">
+          <Link onClick={handleClick} to="work" smooth={true} duration={500}>
+            Portfolio
+          </Link>
+        </li>
+      </ul>
     </div>
-  )
+  );
 }
 
 export default Navbar
