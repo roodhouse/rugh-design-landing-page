@@ -15,6 +15,7 @@ function Portfolio() {
     <>
     <Helmet>
       <title>Portfolio</title>
+      <meta description='Laura Rugh portfolio. Rugh Design.' />
     </Helmet>
     <div name="home" className="w-full h-full pt-60">
       {/* container */}
