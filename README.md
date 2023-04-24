@@ -8,8 +8,17 @@
 
 - Added color wheel and portfolio to the project
 
-## Video
+## Screenshots
 
+- ![SS 1](/assets/ss01.png)
+- ![SS 2](/assets/ss02.png)
+- ![SS 3](/assets/ss03.png)
 
-![Video of site]https://user-images.githubusercontent.com/8303492/234090449-6e70c0a1-a060-4411-a9cd-ec1075dfb800.mov
+## Collaborators:
+
+-John Rugh: (https://github.com/roodhouse)
+
+## Link To Deployed Application
+(https://rugh.design)
+
 
