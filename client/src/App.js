@@ -9,12 +9,16 @@ import Samples from './components/Samples';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import { ScrollRestoration } from 'react-router-dom';
+import Portfolio from './components/Portfolio';
+import Color from './components/color/Home';
+import Wheel from './components/color/Wheel';
+import Scheme from './components/color/schemes/Color'
 
 function App() { 
   return (
     <div>
       <ScrollRestoration />
-      <Navbar />
+      {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={
             [
@@ -26,6 +30,11 @@ function App() {
               <Work />
             ]
           }/>
+        </Routes>
+        <Routes>
+          <Route path='/portfolio' element={[<Navbar />, <Portfolio />]} />
+          <Route path='/color-wheel' element={[<Navbar />, <Color />, <Wheel />]} />
+          <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
         </Routes>
       <Footer />
     </div>

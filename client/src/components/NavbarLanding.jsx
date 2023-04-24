@@ -1,17 +1,14 @@
 import * as React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from '../assets/RD.svg';
 import {FaBars, FaTimes} from 'react-icons/fa';
-import { Link as NewLink } from "react-router-dom";
-import { AiOutlineDown } from 'react-icons/ai'
-
-
+import { AiOutlineDown } from 'react-icons/ai';
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 function Navbar() {
-  // hamburger state
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
@@ -28,7 +25,7 @@ function Navbar() {
   return (
     <div className="fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10">
       {/* logo */}
-      <div>
+      <div onClick={() => scroll.scrollToTop()}>
         <img src={Logo} alt="Rugh Design" />
       </div>
 
@@ -46,7 +43,9 @@ function Navbar() {
               "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
             }}
           >
-            <NewLink to="https://rugh.design">Home</NewLink>
+            <Link to="home" smooth={true} duration={1000}>
+              Home
+            </Link>
           </Button>
         </li>
         <li>
@@ -91,9 +90,9 @@ function Navbar() {
                 "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
               }}
             >
-              <NewLink to="https://www.rughdesign.com/product-category/color-consultation/">
+              <Link to="consult" smooth={true} duration={1000} offset={-250}>
                 Color Consultation
-              </NewLink>
+              </Link>
             </MenuItem>
             <MenuItem
               onClick={handleClose}
@@ -106,9 +105,9 @@ function Navbar() {
                 "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
               }}
             >
-              <NewLink to="https://www.rughdesign.com/product-category/paint-samples/">
+              <Link to="samples" smooth={true} duration={1000} offset={-250}>
                 Color Samples
-              </NewLink>
+              </Link>
             </MenuItem>
             <MenuItem
               onClick={handleClose}
@@ -121,7 +120,9 @@ function Navbar() {
                 "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
               }}
             >
-              <NewLink to="/color-wheel">Color Wheel</NewLink>
+              <Link to="scheme" smooth={true} duration={1000} offset={-250}>
+                Color Wheel
+              </Link>
             </MenuItem>
             <MenuItem
               onClick={handleClose}
@@ -134,9 +135,9 @@ function Navbar() {
                 "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
               }}
             >
-              <NewLink to="https://www.rughdesign.com/review/">
-                Color Reviews
-              </NewLink>
+              <Link to="review" smooth={true} duration={1000} offset={-250}>
+                Color Review
+              </Link>
             </MenuItem>
           </Menu>
         </li>
@@ -152,9 +153,9 @@ function Navbar() {
               "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
             }}
           >
-            <NewLink to="https://www.rughdesign.com/product/new-build-edesign/">
+            <Link to="edesign" smooth={true} duration={1000}>
               eDesign
-            </NewLink>
+            </Link>
           </Button>
         </li>
         <li>
@@ -169,7 +170,9 @@ function Navbar() {
               "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
             }}
           >
-            <NewLink to="https://rugh.design/portfolio">Portfolio</NewLink>
+            <Link to="work" smooth={true} duration={1000} offset={-250}>
+              Portfolio
+            </Link>
           </Button>
         </li>
       </ul>
@@ -193,33 +196,39 @@ function Navbar() {
         }
       >
         <li className="py-6 text-4xl">
-          <NewLink to="https://rugh.design">Home</NewLink>
+          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
+            Home
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://www.rughdesign.com/product-category/color-consultation/">
+          <Link onClick={handleClick} to="consult" smooth={true} duration={500}>
             Color Consultation
-          </NewLink>
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://www.rughdesign.com/product-category/paint-samples/">
+          <Link onClick={handleClick} to="samples" smooth={true} duration={500}>
             Color Samples
-          </NewLink>
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="/color-wheel">Color Wheel</NewLink>
+          <Link onClick={handleClick} to="scheme" smooth={true} duration={500}>
+            Color Schemes
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://www.rughdesign.com/review/">
+          <Link onClick={handleClick} to="review" smooth={true} duration={500}>
             Color Review
-          </NewLink>
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://www.rughdesign.com/product/new-build-edesign/">
+          <Link onClick={handleClick} to="edesign" smooth={true} duration={500}>
             eDesign
-          </NewLink>
+          </Link>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://rugh.design/portfolio">Portfolio</NewLink>
+          <Link onClick={handleClick} to="work" smooth={true} duration={500}>
+            Portfolio
+          </Link>
         </li>
       </ul>
       {/* landscape only menu */}
@@ -231,33 +240,39 @@ function Navbar() {
         }
       >
         <li className="py-1.5 text-2xl">
-          <NewLink to="/">Home</NewLink>
+          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
+            Home
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://www.rughdesign.com/product-category/color-consultation/">
+          <Link onClick={handleClick} to="consult" smooth={true} duration={500}>
             Color Consultation
-          </NewLink>
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://www.rughdesign.com/product-category/paint-samples/">
+          <Link onClick={handleClick} to="samples" smooth={true} duration={500}>
             Color Samples
-          </NewLink>
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="/color-wheel">Color Wheel</NewLink>
+          <Link onClick={handleClick} to="scheme" smooth={true} duration={500}>
+            Color Schemes
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://www.rughdesign.com/review/">
+          <Link onClick={handleClick} to="review" smooth={true} duration={500}>
             Color Review
-          </NewLink>
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://www.rughdesign.com/product/new-build-edesign/">
+          <Link onClick={handleClick} to="edesign" smooth={true} duration={500}>
             eDesign
-          </NewLink>
+          </Link>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://rugh.design/portfolio">Portfolio</NewLink>
+          <Link onClick={handleClick} to="work" smooth={true} duration={500}>
+            Portfolio
+          </Link>
         </li>
       </ul>
     </div>

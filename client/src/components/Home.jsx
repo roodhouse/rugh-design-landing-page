@@ -1,10 +1,13 @@
 import React from 'react'
 import {HiArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-scroll'
-import Laura from '../assets/laura-round.png'
+import Laura from '../assets/laura-round.png';
+import Navbar from './NavbarLanding';
 
 function Home() {
   return (
+    <>
+    <Navbar />
     <div name='home' className='w-full h-[calc(100vh+150px)]'>
         {/* container */}
         <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
@@ -31,6 +34,7 @@ function Home() {
         </div>
 
     </div>
+    </>
   )
 }
 
