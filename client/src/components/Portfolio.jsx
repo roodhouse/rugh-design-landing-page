@@ -6,11 +6,17 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import itemData from '../assets/images'; 
+import { Helmet } from 'react-helmet-async';
 
 
 function Portfolio() {
 
   return (
+    <>
+    <Helmet>
+      <title>Portfolio</title>
+      <meta description='Laura Rugh portfolio. Rugh Design.' />
+    </Helmet>
     <div name="home" className="w-full h-full pt-60">
       {/* container */}
       <div className="flex flex-col h-full">
@@ -147,6 +153,7 @@ function Portfolio() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

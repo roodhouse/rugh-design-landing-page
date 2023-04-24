@@ -4,12 +4,18 @@ import { Link as ScrollLink } from 'react-scroll';
 import {HiArrowNarrowRight} from 'react-icons/hi';
 import Laura from '../../assets/laura-again.jpg';
 import {getColors} from '../../assets/colors';
+import { Helmet } from 'react-helmet-async';
 
 function Home() {
     
     const colors = getColors();
 
   return (
+    <>
+    <Helmet>
+      <title>Color Wheel</title>
+      <meta description='Handpicked color schemes for 1700+ Sherwin-Willaims colors.'/>
+    </Helmet>
     <div name="home" className="w-full h-full pt-44 sm:pt-60">
       {/* container */}
       <div className="flex flex-col h-full">
@@ -47,6 +53,7 @@ function Home() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

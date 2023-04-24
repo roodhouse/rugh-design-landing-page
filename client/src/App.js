@@ -8,17 +8,19 @@ import Review from './components/Review';
 import Samples from './components/Samples';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
-import { ScrollRestoration } from 'react-router-dom';
 import Portfolio from './components/Portfolio';
 import Color from './components/color/Home';
 import Wheel from './components/color/Wheel';
 import Scheme from './components/color/schemes/Color'
+import { HelmetProvider } from 'react-helmet-async';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() { 
+  const helmetContext = {};
+
   return (
-    <div>
-      <ScrollRestoration />
-      {/* <Navbar /> */}
+    <HelmetProvider context={helmetContext}>
+      <ScrollToTop />
         <Routes>
           <Route path='/' element={
             [
@@ -37,7 +39,7 @@ function App() {
           <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
         </Routes>
       <Footer />
-    </div>
+    </HelmetProvider>
   );
 }
 
