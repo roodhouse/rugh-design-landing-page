@@ -3,10 +3,17 @@ import {HiArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-scroll'
 import Laura from '../assets/laura-round.png';
 import Navbar from './NavbarLanding';
+import { Helmet } from 'react-helmet-async';
 
 function Home() {
   return (
     <>
+    <Helmet>
+        <title>Rugh Design - Clarity in Color, Perfection in Paint.</title>
+        <meta
+         name="description"
+         content="Rugh Design. Austin Texas. Interior designer. Interior design. Color consultations. Paint color consultation. eDesign consultations. Peel and Stick paint samples. Sherwin-Williams color review. Sherwin-Williams color schemes."/>
+    </Helmet>
     <Navbar />
     <div name='home' className='w-full h-[calc(100vh+150px)]'>
         {/* container */}
