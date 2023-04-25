@@ -1,3 +1,4 @@
+/* Tabs from color pages */
 .css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected {
     color: white !important;
     border-top: 2px solid white;
@@ -20,6 +21,7 @@
     background-color: transparent !important;
 }
 
+/* services card */
 .css-h93ljk-MuiTypography-root, .css-r40f8v-MuiTypography-root {
     font-family: 'Raleway' !important;
 }
@@ -37,7 +39,7 @@
     border: 2px solid white;
 }
 
-
+/* accordion on color pages */
 .MuiButtonBase-root h5 {
     color: black;
     text-transform: lowercase;

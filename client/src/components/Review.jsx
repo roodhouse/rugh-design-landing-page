@@ -11,7 +11,7 @@ function Review() {
                 <div className="p-6 flex flex-col items-center">
                     <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1]'>Color Wheel</p>
                     <p className='py-4'>Color schemes for over 1700 Sherwin-Williams colors.</p>
-                    <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='https://www.rughdesign.com/color-wheel/'>Explore</a>
+                    <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='/color-wheel/'>Explore</a>
                 </div>
             </div>
             <div name='review' className='max-w-[100%] sm:max-w-[50%] h-fit flex flex-col items-center sm:rounded-lg sm:bg-white sm:shadow-lg pt-60 sm:pt-0'>
