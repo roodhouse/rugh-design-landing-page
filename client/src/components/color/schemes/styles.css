@@ -22,15 +22,15 @@
 }
 
 /* services card */
-.css-h93ljk-MuiTypography-root, .css-r40f8v-MuiTypography-root {
+.MuiTypography-root {
     font-family: 'Raleway' !important;
 }
 
-.css-1knaqv7-MuiButtonBase-root-MuiButton-root {
+.MuiButtonBase-root.MuiButton-root {
     color: #676766 !important;
 }
 
-.css-1knaqv7-MuiButtonBase-root-MuiButton-root:hover {
+.MuiButtonBase-root.MuiButton-root:hover {
     background-color: rgba(229, 193, 193, 0.19) !important;
 }
 
