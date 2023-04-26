@@ -2,7 +2,7 @@ import './App.css';
 import Consult from './components/Consult';
 import Edesign from './components/Edesign';
 import Home from './components/Home';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar.jsx';
 import Work from './components/Work';
 import Review from './components/Review';
 import Samples from './components/Samples';
@@ -14,6 +14,10 @@ import Wheel from './components/color/Wheel';
 import Scheme from './components/color/schemes/Color'
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
+// import NavbarTwo from './components/testnavbar';
+import Create from './components/create';
+import Edit from './components/edit';
+import RecordList from './components/recordList';
 
 function App() { 
   const helmetContext = {};
@@ -39,6 +43,14 @@ function App() {
           <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
         </Routes>
       <Footer />
+
+      {/* <NavbarTwo /> */}
+      <Routes>
+      <Route exact path="/" element={<RecordList />} />
+        <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/create" element={<Create />} />
+      </Routes>
+
     </HelmetProvider>
   );
 }
