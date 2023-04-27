@@ -7,11 +7,13 @@ import Portfolio from './components/Portfolio';
 import Color from './components/color/Home'
 import Scheme from './components/color/schemes/Color'
 import * as te from 'tw-elements';
+import Create from './components/mongoTest/create'
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Edit from './components/mongoTest/edit';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             element: <Scheme />
           }
         ]
+      },
+      {
+        path: "/create",
+        element: <Create />,
+      },
+      {
+        path: "/edit/:id",
+        element: <Edit />,
       },
     ],
   },

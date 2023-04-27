@@ -14,6 +14,10 @@ import Wheel from './components/color/Wheel';
 import Scheme from './components/color/schemes/Color'
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
+import Create from './components/mongoTest/create';
+import Edit from './components/mongoTest/edit';
+import RecordList from './components/mongoTest/recordList';
+import Navigation from './components/mongoTest/navbar';
 
 function App() { 
   const helmetContext = {};
@@ -21,7 +25,7 @@ function App() {
   return (
     <HelmetProvider context={helmetContext}>
       <ScrollToTop />
-        <Routes>
+        {/* <Routes>
           <Route path='/' element={
             [
               <Home />, 
@@ -37,7 +41,13 @@ function App() {
           <Route path='/portfolio' element={[<Navbar />, <Portfolio />]} />
           <Route path='/color-wheel' element={[<Navbar />, <Color />, <Wheel />]} />
           <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
-        </Routes>
+        </Routes> */}
+        <Navigation />
+        <Routes>
+        <Route exact path="/" element={<RecordList />} />
+        <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/create" element={<Create />} />
+      </Routes>
       <Footer />
     </HelmetProvider>
   );
