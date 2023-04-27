@@ -6,6 +6,7 @@ export default function Edit() {
     name: "",
     position: "",
     level: "",
+    content: "",
     records: [],
   });
   const params = useParams();
@@ -50,6 +51,7 @@ export default function Edit() {
       name: form.name,
       position: form.position,
       level: form.level,
+      content: form.content,
     };
 
     // This will send a post request to update the data in the database.
@@ -126,6 +128,16 @@ export default function Edit() {
             />
             <label htmlFor="positionSenior" className="form-check-label">Senior</label>
         </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="content"
+            value={form.content}
+            onChange={(e) => updateForm({ content: e.target.value })}
+          />
         </div>
         <br />
 

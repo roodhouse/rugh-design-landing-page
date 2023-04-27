@@ -6,6 +6,7 @@ export default function Create() {
     name: "",
     position: "",
     level: "",
+    content: "",
   });
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ export default function Create() {
       return;
     });
 
-    setForm({ name: "", position: "", level: "" });
+    setForm({ name: "", position: "", level: "" , content: ""});
     navigate("/");
   }
 
@@ -101,6 +102,16 @@ export default function Create() {
             />
             <label htmlFor="positionSenior" className="form-check-label">Senior</label>
           </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="content"
+            value={form.content}
+            onChange={(e) => updateForm({ content: e.target.value })}
+          />
         </div>
         <div className="form-group">
           <input
