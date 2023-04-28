@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Post from '../dashboard/CreatePost'
 
 export default function Create() {
   const [form, setForm] = useState({
@@ -121,6 +122,7 @@ export default function Create() {
           />
         </div>
       </form>
+      <Post />
     </div>
   );
 }
