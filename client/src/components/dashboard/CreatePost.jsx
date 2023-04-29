@@ -1,26 +1,62 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Container, TextField, Button, Typography, Paper } from '@mui/material';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function CreatePost() {
+
+    //quill state
+    const [ value, setValue ] = useState({
+        content: ''
+    });
+     
+    // quill options
+    const modules = {
+        toolbar: [
+            [{ font: [] }],
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            ["bold", "italic", "underline", "strike"],
+            [{ color: [] }, { background: [] }],
+            [{ script:  "sub" }, { script:  "super" }],
+            ["blockquote", "code-block"],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
+            ["link", "image", "video"],
+            ["clean"],
+        ],
+    }
+
+    // navigate after form is submitted
     const navigate = useNavigate();
 
+    // form state
     const [form, setForm] = useState({
         title: '',
         author: '',
-        content: '',
         image: '',
     })
 
+    // update form and setForm 
     function updateForm(value) {
         return setForm((prev) => {
             return { ...prev, ...value };
         });
     }
 
+    function quillChange(content, delta, source, editor) {
+        setValue(editor.getHTML())
+        
+        console.log(value)
+    }
+
+
+    // on form submit
     async function onSubmit(e) {
         e.preventDefault();
-
+    
+        // form["content"] = Object.values(value.ops[0])[0];
+        form['content'] = value;
         const newPost = { ...form };
 
         await fetch('http://localhost:5001/record/add', {
@@ -35,8 +71,9 @@ function CreatePost() {
             return;
         })
 
-        setForm({ title: '', author: '', content: '', image: ''})
-        navigate('/');
+        setForm({ title: '', author: '', image: ''})
+        setValue({ content: ''})
+        navigate('/dashboard');
 
     }
 
@@ -64,18 +101,17 @@ function CreatePost() {
                         onChange={(e) => updateForm({ author: e.target.value})}
                     
                     />
+
+                    <ReactQuill 
+                        id='quillEditor' 
+                        modules={modules} 
+                        theme='snow' 
+                        value={value} 
+                        onChange={quillChange} 
+                        placeholder='Content goes here...' />
+
+
                     <TextField 
-                    
-                    placeholder='content'
-                    label='content'
-                    type='text'
-                    id='content'
-                    value={form.content}
-                    onChange={(e) => updateForm({ content: e.target.value})}
-                
-                />
-                    <TextField 
-                    
                     placeholder='image'
                     label='image'
                     type='text'
@@ -91,8 +127,8 @@ function CreatePost() {
                 </form>
 
             </Paper>
-
         </Container>
+
     </>
   )
 }

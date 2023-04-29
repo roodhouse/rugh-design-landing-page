@@ -18,6 +18,7 @@ import Create from './components/mongoTest/create';
 import Edit from './components/mongoTest/edit';
 import RecordList from './components/mongoTest/recordList';
 import Navigation from './components/mongoTest/navbar';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() { 
   const helmetContext = {};
@@ -42,13 +43,14 @@ function App() {
           <Route path='/color-wheel' element={[<Navbar />, <Color />, <Wheel />]} />
           <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
         </Routes> */}
-        <Navigation />
+        {/* <Navigation /> */}
         <Routes>
         <Route exact path="/" element={<RecordList />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </HelmetProvider>
   );
 }

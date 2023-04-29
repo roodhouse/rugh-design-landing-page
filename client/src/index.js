@@ -7,7 +7,8 @@ import Portfolio from './components/Portfolio';
 import Color from './components/color/Home'
 import Scheme from './components/color/schemes/Color'
 import * as te from 'tw-elements';
-import Create from './components/mongoTest/create'
+import Create from './components/mongoTest/create';
+import Dash from './components/dashboard/Dashboard';
 
 import {
   createBrowserRouter,
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             element: <Scheme />
           }
         ]
+      },
+      {
+        path: "/dashboard",
+        element: <Dash />,
       },
       {
         path: "/create",

@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaEdit } from 'react-icons/fa'
+import { AiFillDelete } from 'react-icons/ai'
+import 'react-quill/dist/quill.snow.css';
+import parse from 'html-react-parser';
+
 
 const Record = (props) => (
-  <tr>
-    <td>{props.record.title}</td>
-    <td>{props.record.author}</td>
-    <td>{props.record.content}</td>
-    <td>{props.record.image}</td>
-    <td>
-      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-      <button className="btn btn-link"
+  <tr className="border-b bg-[gainsboro] text-[#676766]">
+    <td className="px-6 py-4">{props.record.title}</td>
+    <td className="px-6 py-4">{props.record.author}</td>
+    <td className="px-6 py-4 w-[50%]">{parse(props.record.content)}</td>
+    <td className="px-6 py-4">{props.record.image}</td>
+    <td className="px-6 py-4 flex flex-row justify-between">
+      <Link className="text-green-700 flex items-center" to={`/edit/${props.record._id}`}><span className="inline-block mr-1"><FaEdit /></span>Edit</Link> |
+      <button className="text-red-700 flex items-center"
         onClick={() => {
           props.deleteRecord(props.record._id);
         }}
       >
-        Delete
+        <span className="inline-block mr-1"><AiFillDelete /></span>Delete
       </button>
     </td>
   </tr>
@@ -68,20 +73,20 @@ export default function RecordList() {
 
   // This following section will display the table with the records of individuals.
   return (
-    <div>
-      <h3>Record List</h3>
-      <table className="table table-striped" style={{ marginTop: 20 }}>
-        <thead>
+    <>
+      <h3 className="p-4 text-[#676766]">Blog Posts</h3>
+      <table className="w-full text-left font-light">
+        <thead className="border-b bg-[gainsboro] font-medium text-[#676766]">
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Content</th>
-            <th>Image</th>
-            <th>Action</th>
+            <th className="px-6 py-4">Title</th>
+            <th className="px-6 py-4">Author</th>
+            <th className="px-6 py-4">Content</th>
+            <th className="px-6 py-4">Image</th>
+            <th className="px-6 py-4">Action</th>
           </tr>
         </thead>
         <tbody>{recordList()}</tbody>
       </table>
-    </div>
+    </>
   );
 }
