@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 
 export default function Edit() {
+
   const [form, setForm] = useState({
-    name: "",
-    position: "",
-    level: "",
+    title: "",
+    author: "",
+    image: "",
     content: "",
+    excerpt: "",
     records: [],
   });
+
+
+// quill options
+const modules = {
+    toolbar: [
+        [{ font: [] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike"],
+        [{ color: [] }, { background: [] }],
+        [{ script:  "sub" }, { script:  "super" }],
+        ["blockquote", "code-block"],
+        [{ list:  "ordered" }, { list:  "bullet" }],
+        [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
+        ["link", "image", "video"],
+        ["clean"],
+    ],
+}
+
   const params = useParams();
   const navigate = useNavigate();
 
@@ -45,19 +67,26 @@ export default function Edit() {
     });
   }
 
+  function quillChange(content, delta, source, editor) {
+    // update the form with the content from quill editor
+    updateForm(({content: content}))
+}
+
   async function onSubmit(e) {
     e.preventDefault();
-    const editedPerson = {
-      name: form.name,
-      position: form.position,
-      level: form.level,
+
+    const editedPost = {
+      title: form.title,
+      author: form.author,
       content: form.content,
+      excerpt: form.excerpt,
+      image: form.image
     };
 
     // This will send a post request to update the data in the database.
     await fetch(`http://localhost:5001/update/${params.id}`, {
       method: "POST",
-      body: JSON.stringify(editedPerson),
+      body: JSON.stringify(editedPost),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -66,77 +95,66 @@ export default function Edit() {
     navigate("/");
   }
 
+  // Convert author int to person
+  function authorName() {
+    let theAuthor = form.author
+    
+    if(theAuthor === 2) {
+      theAuthor = 'Laura Rugh'
+    } else {
+      theAuthor = form.author
+    }
+
+    return theAuthor;
+  }
+
   // This following section will display the form that takes input from the user to update the data.
   return (
     <div>
       <h3>Update Record</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name: </label>
+          <label htmlFor="title">Title: </label>
           <input
             type="text"
             className="form-control"
-            id="name"
-            value={form.name}
-            onChange={(e) => updateForm({ name: e.target.value })}
+            id="title"
+            value={form.title.rendered || form.title}
+            onChange={(e) => updateForm({ title: e.target.value })}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="position">Position: </label>
+          <label htmlFor="author">Author: </label>
           <input
             type="text"
             className="form-control"
-            id="position"
-            value={form.position}
-            onChange={(e) => updateForm({ position: e.target.value })}
+            id="author"
+            value={authorName()}
+            onChange={(e) => updateForm({ author: e.target.value })}
           />
         </div>
+
         <div className="form-group">
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="positionOptions"
-              id="positionIntern"
-              value="Intern"
-              checked={form.level === "Intern"}
-              onChange={(e) => updateForm({ level: e.target.value })}
-            />
-            <label htmlFor="positionIntern" className="form-check-label">Intern</label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="positionOptions"
-              id="positionJunior"
-              value="Junior"
-              checked={form.level === "Junior"}
-              onChange={(e) => updateForm({ level: e.target.value })}
-            />
-            <label htmlFor="positionJunior" className="form-check-label">Junior</label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="positionOptions"
-              id="positionSenior"
-              value="Senior"
-              checked={form.level === "Senior"}
-              onChange={(e) => updateForm({ level: e.target.value })}
-            />
-            <label htmlFor="positionSenior" className="form-check-label">Senior</label>
+          <label htmlFor="image">Image: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            value={form.jetpack_featured_media_url || form.image}
+            onChange={(e) => updateForm({ image: e.target.value })}
+          />
+          <img alt={form.title.rendered || form.title} src={form.jetpack_featured_media_url || form.image} />
         </div>
-        </div>
+        
         <div className="form-group">
           <label htmlFor="content">Content</label>
-          <textarea
-            type="text"
+          <ReactQuill
             className="form-control"
-            id="content"
-            value={form.content}
-            onChange={(e) => updateForm({ content: e.target.value })}
+            id="quillEditor"
+            modules={modules}
+            theme="snow"
+            value={form.content.rendered || form.content}
+            onChange={quillChange}
           />
         </div>
         <br />
