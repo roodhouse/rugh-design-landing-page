@@ -34,6 +34,7 @@ function CreatePost() {
     const [form, setForm] = useState({
         title: '',
         author: '',
+        excerpt: '',
         image: '',
     })
 
@@ -71,7 +72,7 @@ function CreatePost() {
             return;
         })
 
-        setForm({ title: '', author: '', image: ''})
+        setForm({ title: '', author: '', excerpt: '', image: ''})
         setValue({ content: ''})
         navigate('/dashboard');
 
@@ -101,6 +102,17 @@ function CreatePost() {
                         onChange={(e) => updateForm({ author: e.target.value})}
                     
                     />
+
+                    <TextField 
+                    
+                    placeholder='excerpt'
+                    label='excerpt'
+                    type='text'
+                    id='excerpt'
+                    value={form.excerpt}
+                    onChange={(e) => updateForm({ excerpt: e.target.value})}
+                
+                />
 
                     <ReactQuill 
                         id='quillEditor' 

@@ -43,6 +43,7 @@ recordRoutes.route("/record/add").post(function (req, response) {
   let myobj = {
     title: req.body.title,
     content: req.body.content,
+    excerpt: req.body.excerpt,
     author: req.body.author,
     image: req.body.image,
   };
@@ -60,6 +61,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     $set: {
       title: req.body.title,
       content: req.body.content,
+      excerpt: req.body.excerpt,
       author: req.body.author,
       image: req.body.image,
     },

@@ -8,10 +8,10 @@ import parse from 'html-react-parser';
 
 const Record = (props) => (
   <tr className="border-b bg-[gainsboro] text-[#676766]">
-    <td className="px-6 py-4">{props.record.title}</td>
+    <td className="px-6 py-4">{props.record.title.rendered || props.record.title}</td>
     <td className="px-6 py-4">{props.record.author}</td>
-    <td className="px-6 py-4 w-[50%]">{parse(props.record.content)}</td>
-    <td className="px-6 py-4">{props.record.image}</td>
+    <td className="px-6 py-4 w-[50%]">{parse(props.record.excerpt.rendered || props.record.excerpt)}</td>
+    <td className="px-6 py-4"><img alt={props.record.title.rendered || props.record.title} src={props.record.jetpack_featured_media_url || props.record.image} /></td>
     <td className="px-6 py-4 flex flex-row justify-between">
       <Link className="text-green-700 flex items-center" to={`/edit/${props.record._id}`}><span className="inline-block mr-1"><FaEdit /></span>Edit</Link> |
       <button className="text-red-700 flex items-center"
@@ -61,6 +61,10 @@ export default function RecordList() {
   // This method will map out the records on the table
   function recordList() {
     return records.map((record) => {
+      if (record.author === 2) {
+        record.author = 'Laura Rugh'
+      }
+      
       return (
         <Record
           record={record}
@@ -71,6 +75,7 @@ export default function RecordList() {
     });
   }
 
+  console.log(records[4])
   // This following section will display the table with the records of individuals.
   return (
     <>
@@ -80,7 +85,7 @@ export default function RecordList() {
           <tr>
             <th className="px-6 py-4">Title</th>
             <th className="px-6 py-4">Author</th>
-            <th className="px-6 py-4">Content</th>
+            <th className="px-6 py-4">Excerpt</th>
             <th className="px-6 py-4">Image</th>
             <th className="px-6 py-4">Action</th>
           </tr>
