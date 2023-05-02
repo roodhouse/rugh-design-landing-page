@@ -9,12 +9,13 @@ import Scheme from './components/color/schemes/Color'
 import * as te from 'tw-elements';
 import Create from './components/mongoTest/create';
 import Dash from './components/dashboard/Dashboard';
-
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import Edit from './components/mongoTest/edit';
+import BlogReview from './components/blog/Review'
+import Posts from './components/blog/Posts';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,16 @@ const router = createBrowserRouter([
       {
         path: "/edit/:id",
         element: <Edit />,
+      },
+      {
+        path: "/review",
+        element: <BlogReview />,
+        children: [
+          {
+            path: '/review/:id',
+            element: <Posts />
+          }
+        ]
       },
     ],
   },

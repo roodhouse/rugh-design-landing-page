@@ -1,0 +1,16 @@
+html, body, #root {
+    height: fit-content;
+}
+
+.cr_toc {
+    background-color: red;
+    margin-bottom: 100px !important;
+}
+
+.cwudiv h2 {
+    margin-bottom: 40px;
+}
+
+iframe {
+    max-width: 100%;
+}

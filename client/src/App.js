@@ -19,6 +19,8 @@ import Edit from './components/mongoTest/edit';
 import RecordList from './components/mongoTest/recordList';
 import Navigation from './components/mongoTest/navbar';
 import Dashboard from './components/dashboard/Dashboard';
+import BlogReview from './components/blog/Review';
+import Posts from './components/blog/Posts';
 
 function App() { 
   const helmetContext = {};
@@ -49,6 +51,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
+        <Route path='/review' element={<BlogReview />} />
+        <Route path='/review/:id' element={[<Navbar />, <Posts />]} />
       </Routes>
       {/* <Footer /> */}
     </HelmetProvider>
