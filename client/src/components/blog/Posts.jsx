@@ -79,12 +79,22 @@ function Posts() {
     return theAuthor;
   }
 
-  console.log(records)
+  // Change width of image containers
+  function changeImgWidth() {
+    let imgArr = [];
+    let originalDiv = document.querySelectorAll('[id^="attachment_"]');
+    imgArr.push(originalDiv);
+    let newImgArr = imgArr[0];
+    
+    newImgArr.forEach(img => {
+      img.style.maxWidth = '100%'
+    })
+  }
 
-        // <div>
-        //   <h1>{records.title.rendered || records.title}</h1>
-        //   <div>{parsedContent()}</div>
-        // </div>
+  changeImgWidth();
+
+  console.log(records)
+  console.log(parsedContent())
 
   return (
     <div id="wrapper" className="w-full h-full">
@@ -108,7 +118,14 @@ function Posts() {
             </div>
             <div id="postDiv">
              
-              <div id="paraDiv" className='text-center'>
+              <div 
+                id="bodyDiv" 
+                className='[&_h2]:text-3xl 
+                           [&_h3]:!text-2xl 
+                           [&_p]:text-justify [&_p]:my-2 text-center
+                           [&_a]:text-[#8ab7ae]
+                           '
+                           >
                 {parsedContent()}
               </div>
             </div>

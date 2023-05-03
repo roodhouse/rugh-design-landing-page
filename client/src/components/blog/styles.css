@@ -14,3 +14,11 @@ html, body, #root {
 iframe {
     max-width: 100%;
 }
+
+#bodyDiv img {
+    max-width: 100%;
+}
+
+a:hover {
+    color: #e5c1c1;
+}
