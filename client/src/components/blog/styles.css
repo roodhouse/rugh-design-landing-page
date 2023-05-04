@@ -2,15 +2,6 @@ html, body, #root {
     height: fit-content;
 }
 
-.cr_toc {
-    background-color: red;
-    margin-bottom: 100px !important;
-}
-
-.cwudiv h2 {
-    margin-bottom: 40px;
-}
-
 iframe {
     max-width: 100%;
 }
@@ -21,4 +12,36 @@ iframe {
 
 a:hover {
     color: #e5c1c1;
+}
+
+table caption {
+    font-size: 14px !important;
+}
+
+.ss_media ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.ss_media ul li {
+    width: 100%;
+}
+
+#bodyDiv ul:last-of-type {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#bodyDiv ul:last-of-type li {
+    width: 100%;
+}
+
+.cr_toc ul {
+    display: block !important;
+}
+
+.cwusvg {
+    margin-bottom: .5rem;
 }

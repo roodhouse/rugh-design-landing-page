@@ -57,6 +57,7 @@ function App() {
       {/* <Footer /> */}
     </HelmetProvider>
   );
+  
 }
 
 export default App;

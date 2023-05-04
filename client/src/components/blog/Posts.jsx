@@ -6,10 +6,31 @@ import './styles.css'
 import Footer from '../Footer';
 import Placehold from '../../assets/laura.jpg'
 import Services from '../color/schemes/Services';
+import { Helmet } from 'react-helmet-async';
+import WPAPI from 'wpapi';
 
 function Posts() {
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [rugh, setRugh] = useState(null);
+  const [rughIsLoading, setRughIsLoading] = useState(true);
+
+var wp = new WPAPI({ endpoint: 'https://www.rughdesign.com/review/wp-json/' });
+
+useEffect(() => {
+  setRughIsLoading(true);
+  async function getRugh() {
+    const newPost = await wp.posts().id(34729).get();
+    setRugh(newPost);
+    setRughIsLoading(false)
+  }
+
+  getRugh();
+}, []);
+
+console.log(!rughIsLoading ? rugh.id : '')
+
+console.log(records.id)
 
   const params = useParams();
   const navigate = useNavigate();
@@ -33,6 +54,7 @@ function Posts() {
         navigate('/');
         return;
       }
+      
       setRecords(record);
       setIsLoading(false);
     }
@@ -93,8 +115,6 @@ function Posts() {
 
   changeImgWidth();
 
-  console.log(records)
-  console.log(parsedContent())
 
   return (
     <div id="wrapper" className="w-full h-full">
@@ -122,18 +142,20 @@ function Posts() {
                 id="bodyDiv" 
                 className='[&_h2]:text-3xl 
                            [&_h3]:!text-2xl 
-                           [&_p]:text-justify [&_p]:my-2 text-center
+                           [&_p]:text-justify [&_p]:my-2 text-center [&_p]:leading-8
                            [&_a]:text-[#8ab7ae]
+                           [&_h4]:font-bold
                            '
                            >
                 {parsedContent()}
               </div>
             </div>
+            <div>{!rughIsLoading ? parse(rugh.content.rendered) : ''}</div>
           </div>
           <div id="sidebarDiv" className="hidden sm:block w-[25%]"></div>
-
           <Services />
           <Footer />
+          <Helmet><script async defer src="//assets.pinterest.com/js/pinit.js"></script></Helmet>
         </div>
       )}
     </div>
