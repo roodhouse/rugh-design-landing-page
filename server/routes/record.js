@@ -16,7 +16,7 @@ const ObjectId = require("mongodb").ObjectId;
 recordRoutes.route("/record").get(async function (req, res) {
   let db_connect = dbo.getDb("blog");
   db_connect
-    .collection("records")
+    .collection("wpblog")
     .find({})
     .toArray()
     .then((data) => {
@@ -30,7 +30,7 @@ recordRoutes.route("/record/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
-      .collection("records")
+      .collection("wpblog")
       .findOne(myquery, function (err, result) {
         if (err) throw err;
         res.json(result);
@@ -47,7 +47,7 @@ recordRoutes.route("/record/add").post(function (req, response) {
     author: req.body.author,
     image: req.body.image,
   };
-  db_connect.collection("records").insertOne(myobj, function (err, res) {
+  db_connect.collection("wpblog").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
@@ -67,7 +67,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     },
   };
   db_connect
-    .collection("records")
+    .collection("wpblog")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
@@ -79,7 +79,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("records").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("wpblog").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.json(obj);

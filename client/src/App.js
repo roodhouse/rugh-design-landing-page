@@ -52,9 +52,10 @@ function App() {
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
         <Route path='/review' element={<BlogReview />} />
-        <Route path='/review/:id' element={[<Navbar />, <Posts />]} />
+        <Route path='/review/:id' element={[<Navbar key={1} />, <Posts key={2} />]} />
       </Routes>
       {/* <Footer /> */}
+
     </HelmetProvider>
   );
   

@@ -19,42 +19,42 @@ import Posts from './components/blog/Posts';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/portfolio",
+        path: "portfolio",
         element: <Portfolio />,
       },
       {
-        path: "/color-wheel",
+        path: "color-wheel",
         element: <Color />,
         children: [
           {
-            path: '/color-wheel/:id',
+            path: 'color-wheel/:id',
             element: <Scheme />
           }
         ]
       },
       {
-        path: "/dashboard",
+        path: "dashboard",
         element: <Dash />,
       },
       {
-        path: "/create",
+        path: "create",
         element: <Create />,
       },
       {
-        path: "/edit/:id",
+        path: "edit/:id",
         element: <Edit />,
       },
       {
-        path: "/review",
+        path: "review",
         element: <BlogReview />,
         children: [
           {
-            path: '/review/:id',
+            path: 'review/:id',
             element: <Posts />
           }
         ]
