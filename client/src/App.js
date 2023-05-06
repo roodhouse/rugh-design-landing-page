@@ -55,7 +55,7 @@ function App() {
         <Route path='/review/:id' element={[<Navbar key={1} />, <Posts key={2} />]} />
       </Routes>
       {/* <Footer /> */}
-
+        {console.log('from app')}
     </HelmetProvider>
   );
   

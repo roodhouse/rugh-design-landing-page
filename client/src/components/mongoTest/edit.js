@@ -108,8 +108,10 @@ const modules = {
     return theAuthor;
   }
 
-  console.log(form.content)
-  console.log(form.content.rendered)
+  // console.log(form.content)
+  // console.log(form.content.rendered)
+
+  console.log('test from edit')
 
   // This following section will display the form that takes input from the user to update the data.
   return (

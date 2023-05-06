@@ -77,6 +77,7 @@ export default function RecordList() {
   }
 
   console.log(records[4])
+  console.log('test from reocrds list')
   // This following section will display the table with the records of individuals.
   return (
     <>
