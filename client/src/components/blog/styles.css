@@ -46,6 +46,6 @@ table caption {
     margin-bottom: .5rem !important;
 }
 
-.su-spoiler-icon:before {
-    /* content: 'FaPlusCircle'; */
+.su-spoiler-content {
+    display: none;
 }

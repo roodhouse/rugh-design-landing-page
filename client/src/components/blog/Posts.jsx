@@ -148,6 +148,7 @@ function Posts() {
   changeImgWidth();
 
   // hide p&S ad
+  // Todo: no longer removing from DOM, maybe keep the ad and add style around the parent div
   function hideAd() {
     let cr_ad = document.getElementsByClassName("cr_ad");
     if (cr_ad.length > 0) {
@@ -156,7 +157,6 @@ function Posts() {
       return;
     }
   }
-
   hideAd();
 
   // Change the style of toc after doc loads
@@ -176,43 +176,48 @@ function Posts() {
     }
   }, [style]);
 
-  // Spoiler sections
-  setTimeout(spoilerSection, 1)
+  // Spoiler sections display or hide content based on which spoiler is clicked
+  // Todo:
+  // 1. style and add transition to the text
+  // 2. change the button on click to a different button
+  // 3. restore the original button when another item is clicked or the current item is clicked again
+  // 4. style the icons and titles
+  setTimeout(spoilerSection, 1);
   function spoilerSection() {
     setTimeout(() => {
-      const plusIcon = document.querySelectorAll('.su-spoiler-icon')
-      const iconArray = Array.from(plusIcon)
-      console.log(iconArray);
+      // Grab spoiler icon divs store them in an array
+      const plusIcon = document.querySelectorAll(".su-spoiler-icon");
+      const iconArray = Array.from(plusIcon);
+      // for each item create an i element, appended it and fill it with the icon
       iconArray.forEach((el) => {
-        const iconP = document.createElement('i')
-        el.appendChild(iconP)
-        iconP.classList.add('fa')
-        iconP.classList.add('fa-plus-circle')
-        // const styles = window.getComputedStyle(el, '::before')
-        // console.log(styles)
-        // el.innerHTML = <FaPlusCircle />;
-        // const content = styles.content;
-        // console.log(content)
-      }) 
-
-      iconArray.forEach((el, i) => {
+        const iconP = document.createElement("i");
+        el.appendChild(iconP);
+        iconP.classList.add("fa");
+        iconP.classList.add("fa-plus-circle");
+      });
+      // Grab the spoiler titles and place them in an array
+      const spoilerTitle = document.querySelectorAll(".su-spoiler-title");
+      const spoilerTitleArray = Array.from(spoilerTitle)
+      // On click of any item check if selectedSpoiler is class is applied and if so remove it and hide the content
+      spoilerTitleArray.forEach((el) => {
         el.addEventListener('click', (event) => {
-          const removeStyle = document.querySelector('.testStyle');
-          if(removeStyle) {
-
-            removeStyle.classList.remove('testStyle');
+          const removeStyle = document.querySelector('.selectedSpoiler')
+          if (removeStyle) {
+            removeStyle.style.display = 'none';
+            removeStyle.classList.remove('selectedSpoiler');
           }
+          // Add selectedSpoiler class to the clicked item and display the content
           if (event.target === el ) {
-            el.classList.add('testStyle')
-            console.log('hi')
-        }
-        });
-      })
-      }
-    , 1000)
-  }
+            const spoilerContent = el.nextSibling
+            spoilerContent.classList.add('selectedSpoiler');
+            spoilerContent.style.display = 'block';
+          }
 
-console.log('test')
+        })
+      })
+
+    }, 1000);
+  }
 
   return (
     <div id="wrapper" className="w-full h-full">
