@@ -147,17 +147,19 @@ function Posts() {
 
   changeImgWidth();
 
-  // hide p&S ad
-  // Todo: no longer removing from DOM, maybe keep the ad and add style around the parent div
-  function hideAd() {
+  // style the ad div's
+  function styleAdDiv() {
+    // Grab all of the ad divs
     let cr_ad = document.getElementsByClassName("cr_ad");
+    // Make sure the ad divs exist then turn them into an array and for each one style the parent div
     if (cr_ad.length > 0) {
-      Array.from(cr_ad).forEach((el) => el.parentElement.remove());
+      Array.from(cr_ad).forEach((el) => el.parentElement.style.marginBottom = '0.5rem');
     } else {
       return;
     }
   }
-  hideAd();
+  // Run the styleAdDiv after 1 second
+  setTimeout(styleAdDiv, 1);
 
   // Change the style of toc after doc loads
   useEffect(() => {
@@ -177,11 +179,6 @@ function Posts() {
   }, [style]);
 
   // Spoiler sections display or hide content based on which spoiler is clicked
-  // Todo:
-  // 1. style and add transition to the text
-  // 2. change the button on click to a different button
-  // 3. restore the original button when another item is clicked or the current item is clicked again
-  // 4. style the icons and titles
   setTimeout(spoilerSection, 1);
   function spoilerSection() {
     setTimeout(() => {
@@ -192,30 +189,42 @@ function Posts() {
       iconArray.forEach((el) => {
         const iconP = document.createElement("i");
         el.appendChild(iconP);
-        iconP.classList.add("fa");
-        iconP.classList.add("fa-plus-circle");
+        iconP.classList.add("fa", "fa-solid", "fa-plus");
       });
       // Grab the spoiler titles and place them in an array
       const spoilerTitle = document.querySelectorAll(".su-spoiler-title");
-      const spoilerTitleArray = Array.from(spoilerTitle)
+      const spoilerTitleArray = Array.from(spoilerTitle);
       // On click of any item check if selectedSpoiler is class is applied and if so remove it and hide the content
       spoilerTitleArray.forEach((el) => {
-        el.addEventListener('click', (event) => {
-          const removeStyle = document.querySelector('.selectedSpoiler')
-          if (removeStyle) {
-            removeStyle.style.display = 'none';
-            removeStyle.classList.remove('selectedSpoiler');
+        const spoilerMain = el.parentElement;
+        spoilerMain.addEventListener("click", (event) => {
+          if (event.target.closest(".su-spoiler-title")) {
+            const spoilerContent = el.nextSibling;
+            if (spoilerContent.style.display === "block") {
+              el.classList.remove("selectedSpoiler");
+              spoilerContent.style.display = "none";
+              const iconMinus = el.firstChild.firstChild;
+              iconMinus.classList.remove("fa-minus");
+              iconMinus.classList.add("fa-plus");
+            } else {
+              el.classList.add("selectedSpoiler");
+              spoilerContent.style.display = "block";
+              const iconMinus = el.firstChild.firstChild;
+              iconMinus.classList.remove("fa-plus");
+              iconMinus.classList.add("fa-minus");
+            }
+            for (const spoiler of spoilerTitleArray) {
+              if (spoiler !== el) {
+                spoiler.classList.remove("selectedSpoiler");
+                spoiler.nextSibling.style.display = "none";
+                const iconMinus = spoiler.firstChild.firstChild;
+                iconMinus.classList.remove("fa-minus");
+                iconMinus.classList.add("fa-plus");
+              }
+            }
           }
-          // Add selectedSpoiler class to the clicked item and display the content
-          if (event.target === el ) {
-            const spoilerContent = el.nextSibling
-            spoilerContent.classList.add('selectedSpoiler');
-            spoilerContent.style.display = 'block';
-          }
-
-        })
-      })
-
+        });
+      });
     }, 1000);
   }
 
