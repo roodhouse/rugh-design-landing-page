@@ -133,6 +133,40 @@ function Posts() {
     return theAuthor;
   }
 
+  // Hide AD
+  // setTimeout(() => {
+  //   if(isLoading) {
+  //     const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
+  //     console.log(hiddenAd)
+  //   }
+    
+  // }, 1000)
+
+  // Todo: select prevlous sib of this element
+  useEffect(() => {
+    const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
+    console.log(hiddenAd)
+    
+  },[isLoading])
+
+// Change text format of h2's that are too large
+useEffect(() => {
+  // Get all of the H2 elements that match the selector `.cwunew h2`
+  const headings = document.querySelectorAll('.cwunew h2');
+  // Iterate over the elements and change the text format of each element
+  for (const heading of headings) {
+    // Split the words by any space character
+    const words = heading.textContent.split(' ');
+    // For each word capitalize the 1st character then append the 1st character to the remaining lowercase characters
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+    }
+    // Rejoin the words with a space in between each word
+    heading.textContent = words.join(' ');
+  }
+}, [isLoading]);
+
+
   // Change width of image containers
   function changeImgWidth() {
     let imgArr = [];
@@ -145,7 +179,8 @@ function Posts() {
     });
   }
 
-  changeImgWidth();
+  // changeImgWidth();
+  setTimeout(changeImgWidth, 1)
 
   // style the ad div's
   function styleAdDiv() {
@@ -153,7 +188,14 @@ function Posts() {
     let cr_ad = document.getElementsByClassName("cr_ad");
     // Make sure the ad divs exist then turn them into an array and for each one style the parent div
     if (cr_ad.length > 0) {
-      Array.from(cr_ad).forEach((el) => el.parentElement.style.marginBottom = '0.5rem');
+      // Array.from(cr_ad).forEach((el) => el.parentElement.style.marginBottom = '0.5rem');
+      Array.from(cr_ad).forEach((el) => {
+        el.parentElement.style.marginBottom = '1rem';
+        el.parentElement.style.border = '0.1rem solid #676766';
+        el.parentElement.style.boxShadow = '1px 4px 9px 1px #676766';
+        el.parentElement.style.padding = '1rem';
+        el.parentElement.style.borderRadius = '1rem';
+      })
     } else {
       return;
     }
