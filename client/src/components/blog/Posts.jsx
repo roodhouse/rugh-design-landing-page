@@ -133,29 +133,6 @@ function Posts() {
     return theAuthor;
   }
 
-  // Hide AD
-  // setTimeout(() => {
-  //   if(isLoading) {
-  //     const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
-  //     console.log(hiddenAd)
-  //   }
-    
-  // }, 1000)
-
-  // Todo: select prevlous sib of this element
-  // useEffect(() => {
-  //   const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
-  //   console.log(hiddenAd)
-    
-  // },[isLoading])
-
-  // // Todo: select prevlous sib of this element
-  // useEffect(() => {
-  //   const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
-  //   console.log(hiddenAd.previousSibling)
-    
-  // },[isLoading])
-
   // Find the ad div and style
   useEffect(() => {
     const hiddenAdAfter = document.querySelector("#bodyDiv > div:nth-child(3)")
@@ -165,12 +142,8 @@ function Posts() {
       const hiddenAdDivAfter = hiddenAdAfter.previousSibling.previousSibling
       if (hiddenAdDivBefore === hiddenAdDivAfter) {
         hiddenAdDivBefore.classList.add('newAdDivClass')
-      } else {
-        console.log('not the smae')
-      }
-    } else {
-      console.log("There is no previous sibling")
-    }
+      } 
+    } 
   },[isLoading])
 
 // Change text format of h2's that are too large
@@ -212,7 +185,6 @@ useEffect(() => {
     let cr_ad = document.getElementsByClassName("cr_ad");
     // Make sure the ad divs exist then turn them into an array and for each one style the parent div
     if (cr_ad.length > 0) {
-      // Array.from(cr_ad).forEach((el) => el.parentElement.style.marginBottom = '0.5rem');
       Array.from(cr_ad).forEach((el) => {
         el.parentElement.style.marginBottom = '1rem';
         el.parentElement.style.border = '0.1rem solid #676766';
@@ -224,7 +196,7 @@ useEffect(() => {
       return;
     }
   }
-  // Run the styleAdDiv after 1 second
+  // Run the styleAdDiv after 1 ms
   setTimeout(styleAdDiv, 1);
 
   // Change the style of toc after doc loads
