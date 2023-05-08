@@ -124,7 +124,7 @@ table caption {
     padding-bottom: 0.5rem;
 }
 
-#bodyDiv .cwudiv .wp-caption-text, #bodyDiv .color-scheme-general .color-scheme-section .wp-caption .wp-caption-text {
+#bodyDiv .wp-caption-text {
     font-size: 14px;
     line-height: 1.5rem;
     text-align: center;
@@ -139,4 +139,41 @@ table caption {
 
 .color-scheme-section:nth-of-type(3) {
     margin-bottom: .5rem;
+}
+
+.newAdDivClass {
+    justify-content: center;
+    margin-bottom: 1rem;
+    border: 0.1rem solid rgb(103, 103, 102);
+    box-shadow: rgb(103, 103, 102) 1px 4px 9px 1px;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2rem;
+    font-size: 14px;
+}
+
+.hey-laura-general .thetop {
+    text-align: left;
+    line-height: 2rem;
+    padding: 0 20px 0 20px;
+}
+
+.qamain {
+    box-shadow: 2px 2px 10px #676766;
+    -webkit-box-shadow: 2px 2px 10px #676766;
+    -moz-box-shadow: 2px 2px 10px #676766;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 26px;
+}
+
+.questions blockquote {
+    padding: 0 15px 0 15px;
+    border-radius: 25px;
+}
+
+blockquote {
+    background-color: #f5f5f5;
 }

@@ -143,10 +143,34 @@ function Posts() {
   // }, 1000)
 
   // Todo: select prevlous sib of this element
-  useEffect(() => {
-    const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
-    console.log(hiddenAd)
+  // useEffect(() => {
+  //   const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
+  //   console.log(hiddenAd)
     
+  // },[isLoading])
+
+  // // Todo: select prevlous sib of this element
+  // useEffect(() => {
+  //   const hiddenAd = document.querySelector("#bodyDiv > div:nth-child(3)")
+  //   console.log(hiddenAd.previousSibling)
+    
+  // },[isLoading])
+
+  // Find the ad div and style
+  useEffect(() => {
+    const hiddenAdAfter = document.querySelector("#bodyDiv > div:nth-child(3)")
+    const hiddenAdBefore =document.querySelector("#bodyDiv > div.mblog-opening > p:nth-child(7) > a:nth-child(5)")
+    if (hiddenAdAfter && hiddenAdBefore) {
+      const hiddenAdDivBefore = hiddenAdBefore.nextSibling.parentElement.parentElement.nextSibling.nextSibling
+      const hiddenAdDivAfter = hiddenAdAfter.previousSibling.previousSibling
+      if (hiddenAdDivBefore === hiddenAdDivAfter) {
+        hiddenAdDivBefore.classList.add('newAdDivClass')
+      } else {
+        console.log('not the smae')
+      }
+    } else {
+      console.log("There is no previous sibling")
+    }
   },[isLoading])
 
 // Change text format of h2's that are too large
