@@ -47,7 +47,9 @@ table caption {
 }
 
 .cwusvg, .cwudiv, .cwudiv #instagram-embed-0, .cwudiv .su-accordion, 
-#bodyDiv .color-scheme-general .color-scheme-section img, .mblog-opening .thetop {
+#bodyDiv .color-scheme-general .color-scheme-section img, .mblog-opening .thetop, 
+#bodyDiv .fea-img, #bodyDiv .latticeimg, #bodyDiv .seasaltcompost img, .wp-image-8790, #bodyDiv .blogcolorlist,
+#bodyDiv .neutralColorsImg {
     margin-bottom: .5rem !important;
 }
 
@@ -155,13 +157,14 @@ table caption {
     font-size: 14px;
 }
 
-.hey-laura-general .thetop {
+.hey-laura-general .thetop, #bodyDiv .main-blog ol {
     text-align: left;
     line-height: 2rem;
     padding: 0 20px 0 20px;
+    list-style: decimal;
 }
 
-.qamain {
+.qamain, .qanda {
     box-shadow: 2px 2px 10px #676766;
     -webkit-box-shadow: 2px 2px 10px #676766;
     -moz-box-shadow: 2px 2px 10px #676766;
@@ -169,11 +172,68 @@ table caption {
     margin-bottom: 26px;
 }
 
-.questions blockquote {
+.questions blockquote, .question blockquote {
     padding: 0 15px 0 15px;
     border-radius: 25px;
 }
 
 blockquote {
     background-color: #f5f5f5;
+}
+
+#bodyDiv #gallery-2, #bodyDiv #gallery-6, #bodyDiv #gallery-10, 
+#bodyDiv #gallery-11, #bodyDiv #gallery-12  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#bodyDiv #gallery-2 .gallery-item, #bodyDiv #gallery-6 .gallery-item, #bodyDiv #gallery-10 .gallery-item, 
+#bodyDiv #gallery-11 .gallery-item, #bodyDiv #gallery-12 .gallery-item {
+    margin-top: 0px;
+}
+
+#bodyDiv #gallery-10 .gallery-item, #bodyDiv #gallery-11 .gallery-item, #bodyDiv #gallery-12 .gallery-item {
+    width: 50%;
+}
+
+#bodyDiv .color_example ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#bodyDiv .color_example ul li {
+    width: 50%;
+}
+
+#bodyDiv .color_example ul li:nth-of-type(1), #bodyDiv .color_example ul li:nth-of-type(2) {
+    margin-bottom: 0.5rem;
+} 
+
+#bodyDiv .latticeimgswatch {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.wp-image-15196, .wp-image-15198, .starpic, .wp-image-11414, .wp-image-11412, .wp-image-11410, 
+.wp-image-11411, #bodyDiv .Limoncompost img, #bodyDiv .caviarcompost img, #bodyDiv .honeybeespost img, .wp-image-9849,
+.wp-image-9850, #attachment_9860 {
+    margin-top: 0.5rem;
+}
+
+#bodyDiv .honeybeespost img {
+    margin-bottom: 0.5rem;
+}
+
+#bodyDiv .caviarcompost h3, #bodyDiv .honeybeespost h3, #bodyDiv #attachment_29004 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bodyDiv .blogcolorlist {
+    display: block !important;
 }
