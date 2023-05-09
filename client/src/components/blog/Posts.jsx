@@ -275,9 +275,9 @@ useEffect(() => {
         <div id="containerDiv" className="max-w-[100%] h-full pt-44">
           <div
             id="contentDiv"
-            className="max-w-[100%] sm:w-[75%] text-center mx-2 mb-2"
+            className="max-w-[100%] md:w-[75%] text-center mx-2 mb-2"
           >
-            <div id="titleDiv" className="mb-2">
+            <div id="titleDiv" className="mb-2 sm:my-8">
               <h1 id='header' className="text-4xl">
                 {records.title.rendered || records.title}
               </h1>
@@ -289,11 +289,15 @@ useEffect(() => {
             <div id="postDiv">
               <div
                 id="bodyDiv"
-                className="[&_h2]:text-3xl 
+                className="[&_h2]:text-3xl
                            [&_h3]:!text-2xl 
                            [&_p]:text-justify [&_p]:my-2 text-center [&_p]:leading-8
                            [&_a]:text-[#8ab7ae]
                            [&_h4]:font-bold
+                           sm:[&_h2]:mt-8 
+                           sm:[&_h3]:mt-8 
+                           sm:[&_p]:my-4
+                           sm:[&_h4]:text-xl
                            "
               >
                 {parsedContent()}

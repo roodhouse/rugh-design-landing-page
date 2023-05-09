@@ -42,6 +42,23 @@ table caption {
     width: 100%;
 }
 
+#bodyDiv .ana_scheme ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#bodyDiv .ana_scheme ul li {
+    width: 45%;
+    padding: 0;
+    margin: 10px;
+}
+
+
+
 .cr_toc ul {
     display: block !important;
 }
@@ -51,6 +68,10 @@ table caption {
 #bodyDiv .fea-img, #bodyDiv .latticeimg, #bodyDiv .seasaltcompost img, .wp-image-8790, #bodyDiv .blogcolorlist,
 #bodyDiv .neutralColorsImg {
     margin-bottom: .5rem !important;
+}
+
+#bodyDiv .color-scheme-general .color-scheme-section .cwunew ul li a img {
+    margin-bottom: 0px !important;
 }
 
 .cwudiv h4 {
@@ -236,4 +257,49 @@ blockquote {
 
 #bodyDiv .blogcolorlist {
     display: block !important;
+}
+
+.smytv {
+    display: flex;
+    justify-content: center;
+}
+
+/* Small Screens */
+@media (min-width: 640px) {
+    .anacs h5, .monocs h5, .trics h5, .compcs h5 {
+        font-size: 20px;
+    }
+
+    .anacs, .monocs, .trics, .compcs {
+        margin-bottom: 1rem;
+        border: 0.1rem solid #676766;
+        box-shadow: 1px 4px 9px 1px #676766;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    #bodyDiv ul:last-of-type {
+        justify-content: center;
+    }
+
+    #bodyDiv ul:last-of-type li {
+        width: 12%;
+    }
+
+    #bodyDiv .ana_scheme ul li {
+        width: 45%;
+    }
+
+    #bodyDiv .blogcolorlist li {
+        width: 100% !important;
+    }
+
+    #bodyDiv .cwudiv .cr_toc ul li, #bodyDiv .cwudiv .pglist li {
+        width: 100%;
+    }
+
+    .anacs h2, .monocs h2, .trics h2, .compcs h2 {
+        margin-top: 0px;
+        font-size: 20px;
+    }
 }
