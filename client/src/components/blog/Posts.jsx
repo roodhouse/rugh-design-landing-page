@@ -275,7 +275,7 @@ useEffect(() => {
         <div id="containerDiv" className="max-w-[100%] h-full pt-44">
           <div
             id="contentDiv"
-            className="max-w-[100%] md:w-[75%] text-center mx-2 mb-2"
+            className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2"
           >
             <div id="titleDiv" className="mb-2 sm:my-8">
               <h1 id='header' className="text-4xl">
