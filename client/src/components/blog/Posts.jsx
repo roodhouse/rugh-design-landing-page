@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import parse from 'html-react-parser';
-import './styles.css'
+import './styles.css';
+import Sidebar from './sidebar/Sidebar';
 import Footer from '../Footer';
 import InstagramEmbed from './InstagramEmbed';
 import Services from '../color/schemes/Services';
@@ -273,6 +274,7 @@ useEffect(() => {
         <h1>Loading...</h1>
       ) : (
         <div id="containerDiv" className="max-w-[100%] h-full pt-44">
+          <div id='mainAndSideDiv' className='flex'>
           <div
             id="contentDiv"
             className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2"
@@ -304,7 +306,10 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          <div id="sidebarDiv" className="hidden sm:block w-[25%]"></div>
+          <div id="sidebarDiv" className="hidden lg:flex w-[25%] flex-col items-center justify-center mr-2 mt-60">
+          <Sidebar/>
+          </div>
+          </div>
           <Services />
           <Footer />
           <InstagramEmbed />
