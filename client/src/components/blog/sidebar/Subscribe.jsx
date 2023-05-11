@@ -8,6 +8,25 @@ function Subscribe() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(firstName, lastName, email)
+        const newSub = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email 
+        }
+        await fetch('http://localhost:5001/record/sub', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newSub)
+        })
+        .catch(error => {
+            window.alert(error);
+            return;
+        })
+        setFirstName('')
+        setLastName('')
+        setEmail('')
     }
     
   return (

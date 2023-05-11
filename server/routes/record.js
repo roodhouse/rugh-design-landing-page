@@ -53,6 +53,20 @@ recordRoutes.route("/record/add").post(function (req, response) {
   });
 });
 
+// This section will help you create a subscription.
+recordRoutes.route("/record/sub").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myobj = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+  };
+  db_connect.collection("subscribers").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 // This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
