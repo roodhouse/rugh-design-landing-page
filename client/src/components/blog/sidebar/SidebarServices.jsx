@@ -10,7 +10,7 @@ import NewBuild from './NewBuild';
 function SidebarServices() {
   return (
     <>
-      <div name="services" className="w-full h-full">
+      <div name="services" className="w-full h-full xl:w-[50%]">
         <div id='sidebarServicesWrapper' className="max-w-[1300px] mx-auto px-4 pt-0 flex flex-col sm:flex-row justify-center w-full h-full">
           <div id='sidebarServicesContainer' className="max-w-[100%] text-center flex flex-col items-center">
            <div id='sidebarServicesHeading' className='pt-10'>

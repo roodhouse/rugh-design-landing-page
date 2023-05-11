@@ -176,8 +176,6 @@ useEffect(() => {
       img.style.maxWidth = "100%";
     });
   }
-
-  // changeImgWidth();
   setTimeout(changeImgWidth, 1)
 
   // style the ad div's
@@ -274,10 +272,10 @@ useEffect(() => {
         <h1>Loading...</h1>
       ) : (
         <div id="containerDiv" className="max-w-[100%] h-full pt-44">
-          <div id='mainAndSideDiv' className='flex'>
+          <div id='mainAndSideDiv' className='block lg:flex xl:mx-8'>
           <div
             id="contentDiv"
-            className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2"
+            className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2 xl:w-[1034px] xl:mx-0 xl:mr-8"
           >
             <div id="titleDiv" className="mb-2 sm:my-8">
               <h1 id='header' className="text-4xl">
@@ -294,6 +292,7 @@ useEffect(() => {
                 className="[&_h2]:text-3xl
                            [&_h3]:!text-2xl 
                            [&_p]:text-justify [&_p]:my-2 text-center [&_p]:leading-8
+                           lg:[&_p]:text-left
                            [&_a]:text-[#8ab7ae]
                            [&_h4]:font-bold
                            sm:[&_h2]:mt-8 
@@ -306,7 +305,7 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          <div id="sidebarDiv" className="hidden lg:flex w-[25%] flex-col items-center justify-center mr-2 mt-60">
+          <div id="sidebarDiv" className="hidden lg:flex w-[25%] flex-col items-center justify-center mr-2 mt-60 xl:w-[590px] xl-mr-0">
           <Sidebar/>
           </div>
           </div>
