@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-// todo:
-// Connect button to database
-// Sets form but doesnt clear input...
 function Subscribe() {
-    const [form, setForm] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-    })
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
 
-    function updateForm(value) {
-        return setForm((prev) => {
-            return { ...prev, ...value}
-        })
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(firstName, lastName, email)
     }
     
-    function HandleClick(e) {
-        e.preventDefault()
-                const submit = document.getElementById('submit');
-                submit.addEventListener('click', (e) => {
-                    console.log('click')
-                    const newSub = { ...form };
-                    console.log(newSub);
-                })
-                setForm({ firstName: '', lastName: '', email: ''})
-    }
-
-
-
   return (
     <div id='subscribeDiv' className='w-full p-2 border border-solid border-[#676766] rounded-md xl:w-[75%]'>
         <div id='subscribeHeadingDiv' className='text-center'>
@@ -37,7 +18,7 @@ function Subscribe() {
         <div id='subscribeTextDiv' className='text-center py-4'>
             <p>subscribe to my newsletter</p>
         </div>
-        <form onSubmit={HandleClick}>
+        <form onSubmit={handleSubmit}>
 
         <div id="subscribeFormDiv" className='flex flex-col items-center px-5'>
             <div id="firstName" className='w-full'>
@@ -46,7 +27,8 @@ function Subscribe() {
                     name='firstName' 
                     placeholder='First Name' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2'
-                    onChange={(e) => updateForm({ firstName: e.target.value})}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                     />
             </div>
             <div id="lastName" className='w-full'>
@@ -55,7 +37,8 @@ function Subscribe() {
                     name='lastName' 
                     placeholder='Last Name' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2'
-                    onChange={(e) => updateForm({ lastName: e.target.value})}
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
                     />
             </div>
             <div id="email" className='w-full'>
@@ -64,7 +47,8 @@ function Subscribe() {
                     name="email" 
                     placeholder='email' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2'
-                    onChange={(e) => updateForm({ email: e.target.value})}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     />
             </div>
             <div id="subSubmit" className='w-full'>
