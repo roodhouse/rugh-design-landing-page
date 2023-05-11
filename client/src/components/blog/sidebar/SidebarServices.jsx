@@ -3,10 +3,6 @@ import Exterior from './Exterior';
 import Interior from './Interior';
 import NewBuild from './NewBuild';
 
-// todo:
-// center learn more buttons
-// change submit button to have same effect that these buttons have
-
 function SidebarServices() {
   return (
     <>
