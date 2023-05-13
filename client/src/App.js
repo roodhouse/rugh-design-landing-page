@@ -51,11 +51,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
-        <Route path='/review' element={<BlogReview />} />
+        <Route path='/review' element={[<Navbar key={1} />, <BlogReview key={2} />]} />
         <Route path='/review/:id' element={[<Navbar key={1} />, <Posts key={2} />]} />
       </Routes>
       {/* <Footer /> */}
-        {console.log('from app')}
     </HelmetProvider>
   );
   

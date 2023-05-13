@@ -1,8 +1,15 @@
 import React from 'react'
+import Home from './content/Home'
+import AllPosts from './content/AllPosts'
+import Footer from '../Footer'
 
 function Review() {
   return (
-    <div>Review</div>
+    <>
+    <Home />
+    <AllPosts />
+    <Footer />
+    </>
   )
 }
 
