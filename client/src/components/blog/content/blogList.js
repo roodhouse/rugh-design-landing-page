@@ -7,7 +7,6 @@ import './styles.css'
 // Todo:
 // 2. Clean up unneeded code
 // 3. Style, mobile first
-// 4. Figure out how to sort with mongodb
 // 5. Figure out pagination with mongodb react
 
 const Record = (props) => (
