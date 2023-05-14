@@ -19,15 +19,28 @@ recordRoutes.route("/record").get(async function (req, res) {
     .find({})
     .toArray()
     .then((data) => {
-      console.log(data);
       res.json(data);
     });
 });
 
-// This section will help you get a single record by id
-recordRoutes.route("/record/:id").get(function (req, res) {
+// This section will help you get a single record by id <--- old section that retreives by _id
+// recordRoutes.route("/record/:id").get(function (req, res) {
+//   let db_connect = dbo.getDb();
+//   let myquery = { _id: ObjectId( req.params.id )};
+//   db_connect
+//       .collection("wpblog")
+//       .findOne(myquery, function (err, result) {
+//         if (err) throw err;
+//         res.json(result);
+//         console.log(result.slug)
+//         console.log(req.params.id)
+//       });
+// });
+
+// This section will help you get a single record by slug
+recordRoutes.route("/record/:slug").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { slug: req.params.slug};
   db_connect
       .collection("wpblog")
       .findOne(myquery, function (err, result) {

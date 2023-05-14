@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaEdit, FaEye } from 'react-icons/fa'
-import { AiFillDelete } from 'react-icons/ai';
 import 'react-quill/dist/quill.snow.css';
 import parse from 'html-react-parser';
+import './styles.css'
 
 // Todo:
-// 1. Create card for blog posts and replace Record below
 // 2. Clean up unneeded code
 // 3. Style, mobile first
+// 4. Figure out how to sort with mongodb
+// 5. Figure out pagination with mongodb react
 
 const Record = (props) => (
-  <tr className="border-b bg-[gainsboro] text-[#676766]">
-    <td className="px-6 py-4">{props.record.title.rendered || props.record.title}</td>
-    <td className="px-6 py-4">{props.record.author}</td>
-    <td className="px-6 py-4 w-[50%]">{parse(props.record.excerpt.rendered || props.record.excerpt)}</td>
-    <td className="px-6 py-4"><img alt={props.record.title.rendered || props.record.title} src={props.record.jetpack_featured_media_url || props.record.image} /></td>
-    <td className="px-6 py-4 flex flex-row justify-between">
-    <Link className="text-blue-700 flex items-center" to={`/review/${props.record._id}`}><span className="inline-block mr-1"><FaEye /></span>View</Link> |
-      <Link className="text-green-700 flex items-center" to={`/edit/${props.record._id}`}><span className="inline-block mr-1"><FaEdit /></span>Edit</Link> |
-      <button className="text-red-700 flex items-center"
-        onClick={() => {
-          props.deleteRecord(props.record._id);
-        }}
-      >
-        <span className="inline-block mr-1"><AiFillDelete /></span>Delete
-      </button>
-    </td>
-  </tr>
+  
+  <div className="flex flex-col sm:flex-row flex-wrap gap-y-20 items-center sm:justify-evenly pb-20 pt-10">
+    <div className="max-w-[100%] overflow-hidden border-[0] border-solid border-[#e5e7eb] text-center box-border rounded bg-[rgb(255,255,255)] shadow-[0_2px_1px_-1px_rgba(0,0,0,0.2),0_1px_1px_0_rgba(0,0,0,0.14),0_1px_3px_0_rgba(0,0,0,0.12)]">
+      <img src={props.record.jetpack_featured_media_url || props.record.image} alt={props.record.title.rendered || props.record.title} className="max-w-[100%] w-[100%] h-auto block bg-cover bg-no-repeat bg-center object-cover"/>
+      <div className="p-4">
+        <div className="mt-0 mx-0 mb-[0.35em] text-[#676766] font-medium text-2xl leading-8 tracking-normal">{props.record.title.rendered || props.record.title}</div>
+        <p className="m-0 font-light text-sm text-justify tracking-[0.01071em] text-[#676766] leading-6">{parse(props.record.excerpt.rendered || props.record.excerpt)}</p>
+      </div>
+      <div className="flex items-center p-2">
+        <Link to={`/review/${props.record.slug}`} className="text-[#676766] inline-flex items-center justify-center relative bg-[transparent] outline-[0] border-[0] m-[0] cursor-pointer align-middle no-underline font-normal text-[0.8125rem] tracking-[0.02857em] uppercase
+                               min-w-[64px] py-1 px-[5px] rounded transition duration-[250ms]
+                               hover:text-[#676766] hover:bg-[hsla(0,41%,83%,.19)]">
+                                Read More</Link>
+
+      </div>
+    </div>
+  </div>
 );
 
 export default function BlogList() {
@@ -71,6 +71,7 @@ export default function BlogList() {
   }
 
   console.log(records)
+  console.log(recordList())
 
   // Display the posts
   return (
@@ -81,7 +82,7 @@ export default function BlogList() {
           <p className="py-4">transform your space</p>
         </div>
         <div id="allPosts">
-          All posts here
+          {recordList()}
         </div>
       </div>
     </>

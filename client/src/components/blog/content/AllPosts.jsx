@@ -3,7 +3,7 @@ import BlogList from './blogList'
 
 function AllPosts() {
   return (
-    <div name='posts' className='h-full pt-[20rem] mx-auto px-8'>
+    <div name='posts' className='pt-[20rem] mx-auto px-8'>
         <BlogList />
     </div>
   )

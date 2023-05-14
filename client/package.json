@@ -13,6 +13,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "async": "^3.2.4",
+    "bson-objectid": "^2.0.4",
     "font-awesome": "^4.7.0",
     "html-react-parser": "^3.0.16",
     "react": "^18.2.0",

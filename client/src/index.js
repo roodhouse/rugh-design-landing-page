@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <BlogReview />,
         children: [
           {
-            path: 'review/:id',
+            path: 'review/:slug',
             element: <Posts />
           }
         ]

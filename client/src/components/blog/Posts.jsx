@@ -55,21 +55,22 @@ function Posts() {
   return null;
 };
 
-  const params = useParams();
-  const navigate = useNavigate();
 
-  setTimeout(() =>{
-    
-  })
+setTimeout(() =>{
+  
+})
+const params = useParams();
+const navigate = useNavigate();
+
   // This method fetches the records from the database.
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
 
       async function getRecords() {
-        const id = params.id.toString();
+        const id = params.slug.toString();
         const response = await fetch(
-          `http://localhost:5001/record/${params.id.toString()}`
+          `http://localhost:5001/record/${params.slug.toString()}`
         );
   
         if (!response.ok) {
