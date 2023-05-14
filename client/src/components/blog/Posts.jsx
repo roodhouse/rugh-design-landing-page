@@ -7,8 +7,6 @@ import Footer from '../Footer';
 import InstagramEmbed from './InstagramEmbed';
 import Services from '../color/schemes/Services';
 import { Helmet } from 'react-helmet-async';
-import WPAPI from 'wpapi';
-import {FaPlusCircle} from 'react-icons/fa'
 
 function Posts() {
   const [records, setRecords] = useState([]);
