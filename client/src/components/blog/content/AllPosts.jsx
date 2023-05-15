@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogList from './blogList'
+import BlogList from './BlogList'
 
 function AllPosts() {
     
