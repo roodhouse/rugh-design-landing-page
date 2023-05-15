@@ -1,3 +1,25 @@
 .readmorelink {
     display: none;
 }
+
+.paginationContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.paginationContainer li {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.selected {
+    border: 1px solid;
+    border-radius: 100%;
+    background: #e5c1c1;
+    color: white;
+}
+
+.selected a:hover {
+    color: white;
+}

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import parse from "html-react-parser";
 import "./styles.css";
+import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
+import { FaEllipsisH } from 'react-icons/fa'
 
 // Todo:
 //1. watch this video for pagination issues https://www.youtube.com/watch?v=Y48V8gNUvew&ab_channel=Index-Zero
@@ -46,16 +49,13 @@ export default function BlogList() {
       setPageCount(Math.ceil(records.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, records]);
 
-    console.log(itemOffset);
-    console.log(currentItems);
-
     const handlePageClick = (event) => {
       const newOffset = (event.selected * itemsPerPage) % records.length;
       setItemOffset(newOffset);
     };
     const recordList = currentItems.map((record) => {
       return (
-        <div className="flex flex-col sm:flex-row flex-wrap gap-y-20 items-center sm:justify-evenly pb-20 pt-10">
+        <div key={record._id} className="flex flex-col sm:flex-row flex-wrap gap-y-20 items-center sm:justify-evenly pb-20 pt-10">
           <div className="max-w-[100%] overflow-hidden border-[0] border-solid border-[#e5e7eb] text-center box-border rounded bg-[rgb(255,255,255)] shadow-[0_2px_1px_-1px_rgba(0,0,0,0.2),0_1px_1px_0_rgba(0,0,0,0.14),0_1px_3px_0_rgba(0,0,0,0.12)]">
             <img
               src={record.jetpack_featured_media_url || record.image}
@@ -90,13 +90,17 @@ export default function BlogList() {
         <div id="allPosts">{recordList}</div>
         <div id="pagination">
           <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
+            breakLabel={<FaEllipsisH />}
+            breakClassName="breakLink"
+            nextLabel={<FaArrowRight />}
+            nextLinkClassName="nextLink"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={1}
             pageCount={pageCount}
-            previousLabel="< previous"
+            previousLabel={<FaArrowLeft />}
+            previousLinkClassName="previousLink"
             renderOnZeroPageCount={null}
+            containerClassName="paginationContainer"
           />
         </div>
       </>
@@ -106,7 +110,7 @@ export default function BlogList() {
   // Display the posts
   return (
     <>
-      <div className="max-w-[1000px] mx-auto p-4 pt-60 sm:pt-0 flex flex-col sm:flex-row justify-center w-full h-full">
+      <div className="max-w-[1000px] mx-auto pb-4 pt-60 sm:pt-0 flex flex-col sm:flex-row justify-center w-full h-full">
         <div className="max-w-[100%] text-center sm:text-right flex flex-col items-center sm:items-end">
           <p className="text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1] pt-4 sm:pt-0">
             Color Review
