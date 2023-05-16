@@ -8,12 +8,9 @@ import { FaArrowRight } from 'react-icons/fa'
 import { FaArrowLeft } from 'react-icons/fa'
 import { FaEllipsisH } from 'react-icons/fa'
 
-// Todo:
-// 2. Clean up unneeded code
-// 3. make image same size view _embedded data..
-
 export default function BlogList() {
   const [records, setRecords] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   // This method fetches the records from the database.
   useEffect(() => {
@@ -28,6 +25,7 @@ export default function BlogList() {
 
       const records = await response.json();
       setRecords(records);
+      setIsLoading(false);
     }
 
     getRecords();
@@ -35,6 +33,23 @@ export default function BlogList() {
     return;
   }, [records.length]);
 
+  // Remove read more div
+  function removeReadMore() {
+    if (!isLoading) {
+      const readMoreDiv = document.getElementsByClassName('readmorelink')
+      if (readMoreDiv.length > 0) {
+        Array.from(readMoreDiv).forEach((el) => {
+          el.parentElement.remove()
+          console.log('items removed, warning above now invalid')
+        })
+      } else {
+        return;
+      }
+    } 
+  }
+
+  removeReadMore();
+  
   function Pagination() {
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
