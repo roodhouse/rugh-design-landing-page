@@ -28,7 +28,7 @@ function Home() {
                 Read my color reviews and transform your space
               </p>
               <div>
-                <ScrollLink to="posts" smooth={true} duration={500}>
+                <ScrollLink to="posts" smooth={true} duration={500} offset={400}>
                   <button className="text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white">
                     Explore
                     <span className="group-hover:rotate-90 duration-300">

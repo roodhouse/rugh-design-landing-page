@@ -96,6 +96,7 @@ export default function BlogList() {
             nextLinkClassName="nextLink"
             onPageChange={handlePageClick}
             pageRangeDisplayed={1}
+            marginPagesDisplayed={2}
             pageCount={pageCount}
             previousLabel={<FaArrowLeft />}
             previousLinkClassName="previousLink"
