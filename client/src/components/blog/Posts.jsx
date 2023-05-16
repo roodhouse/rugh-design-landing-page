@@ -264,7 +264,37 @@ useEffect(() => {
     }, 1000);
   }
 
+  // Get tags function
+  function getTags() {
+    const postTags = records._embedded["wp:term"][1]
+    console.log(postTags)
+  }
+
   return (
+    <>
+    {isLoading ? (
+      <h1>Loading...</h1>
+    ) : (
+    <Helmet>
+      <title>{records.title.rendered || records.title}</title>
+      {getTags()}
+      {/* <meta name='description' content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={`${color.name} coordinating colors and color schemes` } />
+      <meta property="og:description" content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
+      <meta property="og:url" content={`https://rugh.design/color-wheel/${color.id}`} />
+      <meta property="og:site_name" content="Rugh Design" />
+      <meta property="article:publisher" content="https://www.facebook.com/lauraerugh" />
+      <meta property="og:updated_time" content="2023-04-22T18:24:15+00:00" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={`${color.name} coordinating colors and color schemes`} />
+      <meta name="twitter:description" content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
+      <meta name="twitter:label1" content="Time to read" />
+      <meta name="twitter:data1" content="Less than a minute" /> */}
+    </Helmet>
+
+    )}
     <div id="wrapper" className="w-full h-full">
       {/* <Navbar /> */}
       {isLoading ? (
@@ -314,6 +344,7 @@ useEffect(() => {
         </div>
       )}
     </div>
+    </>
   );
 }
 
