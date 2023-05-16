@@ -9,10 +9,8 @@ import { FaArrowLeft } from 'react-icons/fa'
 import { FaEllipsisH } from 'react-icons/fa'
 
 // Todo:
-//1. watch this video for pagination issues https://www.youtube.com/watch?v=Y48V8gNUvew&ab_channel=Index-Zero
 // 2. Clean up unneeded code
-// 3. Style, mobile first
-// 5. Figure out pagination with mongodb react
+// 3. make image same size view _embedded data..
 
 export default function BlogList() {
   const [records, setRecords] = useState([]);
@@ -55,7 +53,7 @@ export default function BlogList() {
     };
     const recordList = currentItems.map((record) => {
       return (
-        <div key={record._id} className="flex flex-col sm:flex-row flex-wrap gap-y-20 items-center sm:justify-evenly pb-20 pt-10">
+        <div key={record._id} className="flex flex-col lg:flex-row flex-wrap gap-y-20 items-center lg:justify-evenly pb-20 pt-10 lg:max-w-[45%]">
           <div className="max-w-[100%] overflow-hidden border-[0] border-solid border-[#e5e7eb] text-center box-border rounded bg-[rgb(255,255,255)] shadow-[0_2px_1px_-1px_rgba(0,0,0,0.2),0_1px_1px_0_rgba(0,0,0,0.14),0_1px_3px_0_rgba(0,0,0,0.12)]">
             <img
               src={record.jetpack_featured_media_url || record.image}
@@ -87,7 +85,7 @@ export default function BlogList() {
 
     return (
       <>
-        <div id="allPosts">{recordList}</div>
+        <div id="allPosts" className="lg:flex lg:flex-row lg:flex-wrap lg:justify-around lg:items-start">{recordList}</div>
         <div id="pagination">
           <ReactPaginate
             breakLabel={<FaEllipsisH />}
@@ -111,9 +109,9 @@ export default function BlogList() {
   // Display the posts
   return (
     <>
-      <div className="max-w-[1000px] mx-auto pb-4 pt-60 sm:pt-0 flex flex-col sm:flex-row justify-center w-full h-full">
-        <div className="max-w-[100%] text-center sm:text-right flex flex-col items-center sm:items-end">
-          <p className="text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1] pt-4 sm:pt-0">
+      <div className="max-w-[1000px] mx-auto pb-4 pt-60 flex flex-col justify-center w-full h-full">
+        <div className="max-w-[100%] text-center lg:text-right flex flex-col items-center lg:items-end">
+          <p className="text-4xl md:text-5xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1] pt-4 lg:pt-0">
             Color Review
           </p>
           <p className="py-4">transform your space</p>

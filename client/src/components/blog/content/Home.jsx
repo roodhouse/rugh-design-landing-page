@@ -12,16 +12,16 @@ function Home() {
       <title>Color Review</title>
       <meta description='Color review and blog from Laura Rugh with Rugh Design.'/>
     </Helmet>
-    <div name="home" className="w-full h-full pt-44 sm:pt-60">
+    <div name="home" className="w-full h-full pt-44 lg:pt-60">
       {/* container */}
       <div className="flex flex-col h-full">
         <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full">
-          <div className="flex flex-col sm:flex-row justify-center">
-            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-              <h1 className="text-4xl sm:text-7xl font-bold text-[#E5C1C1] border-b-4 border-[#676766] whitespace-nowrap">
+          <div className="flex flex-col lg:flex-row justify-center">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-[#E5C1C1] border-b-4 border-[#676766] whitespace-nowrap">
                 Color Review
               </h1>
-              <h2 className="text-4xl sm:text-7xl font-bold text-[#676766]">
+              <h2 className="text-4xl lg:text-7xl font-bold text-[#676766]">
                 Discover your color
               </h2>
               <p className="text-[#676766] py-4 max-w-[700px]">
@@ -38,7 +38,7 @@ function Home() {
                 </ScrollLink>
               </div>
             </div>
-            <div className="flex flex-row justify-center sm:justify-normal sm:ml-[5%] h-[100%] w-[100%] md:h-[75%] order-first sm:order-last pb-4 sm:pb-0">
+            <div className="flex flex-row justify-center lg:justify-normal lg:ml-[5%] h-[100%] w-[100%] lg:h-[75%] order-first lg:order-last pb-4 lg:pb-0">
               <img
                 className="rounded-full md:h-[100%]"
                 src={Laura}
