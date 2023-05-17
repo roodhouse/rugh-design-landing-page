@@ -264,10 +264,37 @@ useEffect(() => {
     }, 1000);
   }
 
+  // todo:
+  // 1. search tags collection for tag ids mentioned in records.tags
   // Get tags function
   function getTags() {
-    const postTags = records._embedded["wp:term"][1]
-    console.log(postTags)
+    const postTags = records.tags
+  
+    async function theTags() {
+      const response = await fetch(
+        `http://localhost:5001/tags/`
+      );
+
+      if (!response.ok) {
+        const message = `An error occured: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const allTags = await response.json();
+      if (!allTags) {
+        window.alert(`no tags`);
+        return;
+      }
+      
+      // how to get the value out of this?
+      postTags.forEach((el) => {
+           const newTag = allTags.find(tag => tag.id === el)
+           console.log(newTag.name)
+       })  
+      
+    }
+    theTags();
   }
 
   return (
