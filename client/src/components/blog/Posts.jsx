@@ -8,9 +8,6 @@ import InstagramEmbed from "./InstagramEmbed";
 import Services from "../color/schemes/Services";
 import { Helmet } from "react-helmet-async";
 
-// todo: 
-// 1. add more of the meta tags based on original blog
-
 function Posts() {
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -303,7 +300,6 @@ function Posts() {
             newMeta.setAttribute('property', 'article:tag');
             newMeta.content = el;
             document.getElementsByTagName('head')[0].appendChild(newMeta)
-            console.log(newMeta)
             return (
               `<meta property="article:tag" content=${el}>`
             ) 
@@ -315,6 +311,80 @@ function Posts() {
     }
 metaTag()
 
+// Get categories
+let categories = []
+async function getCategories() {
+  if (!isLoading) {
+    const postCategories = records.categories
+    const response = await fetch(`http://localhost:5001/categories/`);
+
+    if(!response.ok) {
+      const message = `An error occured: ${response.statusText}`;
+      window.alert(message);
+      return;
+    }
+
+    const allCats = await response.json();
+      if (!allCats) {
+        window.alert(`no categories`);
+        return;
+      }
+      
+      postCategories.forEach((el) => {
+        const newCat = allCats.find((cat) => cat.id === el);
+        const newNameCat = newCat.name;
+        categories.push(newNameCat);
+      });
+  } else {
+    console.log("cats still loading");
+  }
+  return categories;
+}
+// Set primary category in the meta tag
+async function metaCat() {
+  if(!isLoading) {
+    await setTimeout(() => {
+        
+          const newCategory = document.createElement('meta');
+          newCategory.setAttribute('property', 'article:section');
+          newCategory.content = categories[0];
+          document.getElementsByTagName('head')[0].appendChild(newCategory) 
+      }, 800)
+  } else {
+    console.log('cat meta tag func still loading')
+  }
+  }
+metaCat()
+
+
+
+// Description meta
+ function truncateExcerpt(string, limit) {
+      if ( string.length > limit ) {
+        const metaExcerpt = string.substring(0, limit) + '...';
+        const newMeta = document.createElement('meta');
+        newMeta.setAttribute('name', 'description');
+        newMeta.content = metaExcerpt;
+        document.getElementsByTagName('head')[0].appendChild(newMeta)
+        // Provide for the og description
+        const ogNewMeta = document.createElement('meta');
+        ogNewMeta.setAttribute('property', 'og:description');
+        ogNewMeta.content = metaExcerpt
+        document.getElementsByTagName('head')[0].appendChild(ogNewMeta)
+        // Provide for the twitter description
+        const twNewMeta = document.createElement('meta');
+        twNewMeta.setAttribute('name', 'twitter:description');
+        twNewMeta.content = metaExcerpt;
+        document.getElementsByTagName('head')[0].appendChild(twNewMeta)
+      } else {
+        console.log('smaller')
+      } 
+}
+
+ if (!isLoading) {
+  truncateExcerpt(records.excerpt.rendered || records.excerpt, 120)
+  getCategories()
+ }
 
   return (
     <>
@@ -323,20 +393,25 @@ metaTag()
       ) : (
         <Helmet>
           <title>{records.title.rendered || records.title}</title>
-          {/* <meta name='description' content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
+          
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content={`${color.name} coordinating colors and color schemes` } />
-      <meta property="og:description" content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
-      <meta property="og:url" content={`https://rugh.design/color-wheel/${color.id}`} />
+      <meta property="og:title" content={`${records.title.rendered || records.title}` } />
+      <meta property="og:url" content={`https://rugh.design/review/${records.slug}`} />
       <meta property="og:site_name" content="Rugh Design" />
       <meta property="article:publisher" content="https://www.facebook.com/lauraerugh" />
-      <meta property="og:updated_time" content="2023-04-22T18:24:15+00:00" />
+      <meta property="og:updated_time" content={records.modified}/>
+      <meta property="og:image" content={records.jetpack_featured_media_url || records.image}/>
+      <meta property="og:image:secure_url" content={records.jetpack_featured_media_url || records.image}/>
+      <meta property="og:image:width" content='1024'/>
+      <meta property="og:image:height" content='1024'/>
+      <meta property="og:image:alt" content={`${records.title.rendered || records.title}` }/>
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={`${color.name} coordinating colors and color schemes`} />
-      <meta name="twitter:description" content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
-      <meta name="twitter:label1" content="Time to read" />
-      <meta name="twitter:data1" content="Less than a minute" /> */}
+      <meta name="twitter:image" content={records.jetpack_featured_media_url || records.image} />
+      <meta name="twitter:label1" content="Written by" />
+      <meta name="twitter:data1" content={authorName()} />
+      <meta name="twitter:label2" content="Time to read" />
+      <meta name="twitter:data2" content='Less than a minute' />
         </Helmet>
       )}
       <div id="wrapper" className="w-full h-full">

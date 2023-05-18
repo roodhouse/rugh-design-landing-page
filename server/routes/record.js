@@ -35,6 +35,18 @@ recordRoutes.route("/tags").get(async function (req, res) {
     });
 });
 
+// This section will help you get a list of all the categories.
+recordRoutes.route("/categories").get(async function (req, res) {
+  let db_connect = dbo.getDb("blog");
+  db_connect
+    .collection("categories")
+    .find({})
+    .toArray()
+    .then((data) => {
+      res.json(data);
+    });
+});
+
 // This section will help you get a single record by id <--- old section that retreives by _id
 // recordRoutes.route("/record/:id").get(function (req, res) {
 //   let db_connect = dbo.getDb();
