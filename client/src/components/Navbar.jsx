@@ -134,7 +134,7 @@ function Navbar() {
                 "&:hover": { backgroundColor: "rgba(229, 193, 193, 0.19)" },
               }}
             >
-              <NewLink to="https://www.rughdesign.com/review/">
+              <NewLink to="/review">
                 Color Reviews
               </NewLink>
             </MenuItem>
@@ -209,7 +209,7 @@ function Navbar() {
           <NewLink to="/color-wheel">Color Wheel</NewLink>
         </li>
         <li className="py-6 text-4xl">
-          <NewLink to="https://www.rughdesign.com/review/">
+          <NewLink to="/review">
             Color Review
           </NewLink>
         </li>
@@ -247,7 +247,7 @@ function Navbar() {
           <NewLink to="/color-wheel">Color Wheel</NewLink>
         </li>
         <li className="py-1.5 text-2xl">
-          <NewLink to="https://www.rughdesign.com/review/">
+          <NewLink to="/review">
             Color Review
           </NewLink>
         </li>

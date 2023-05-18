@@ -22,7 +22,7 @@ function List(props) {
     return (
         <div className='colors-container flex flex-row flex-wrap justify-center'>
             {filteredData.map((item) => (
-               <Link className='m-2' to={`../color-wheel/${item.id}`} alt={`${item.name} ${item.code}`}>
+               <Link key={item.id} className='m-2' to={`../color-wheel/${item.id}`} alt={`${item.name} ${item.code}`}>
                 <Tooltip 
                     title={`${item.name} ${item.code} | ${item.family} color family`} 
                     enterDelay={1500}

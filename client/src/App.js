@@ -28,33 +28,33 @@ function App() {
   return (
     <HelmetProvider context={helmetContext}>
       <ScrollToTop />
-        {/* <Routes>
+        <Routes>
           <Route path='/' element={
             [
-              <Home />, 
-              <Consult />, 
-              <Samples />,
-              <Review />,
-              <Edesign />,
-              <Work />
+              <Home key={1} />, 
+              <Consult key={2} />, 
+              <Samples key={3} />,
+              <Review key={4} />,
+              <Edesign key={5} />,
+              <Work key={6} />,
+              <Footer key={7} />
             ]
           }/>
         </Routes>
         <Routes>
-          <Route path='/portfolio' element={[<Navbar />, <Portfolio />]} />
-          <Route path='/color-wheel' element={[<Navbar />, <Color />, <Wheel />]} />
-          <Route path='/color-wheel/:id' element={[<Navbar />,<Scheme />]} />
-        </Routes> */}
-        {/* <Navigation /> */}
+          <Route path='/portfolio' element={[<Navbar key={1} />, <Portfolio key={2} />, <Footer key={3} />]} />
+          <Route path='/color-wheel' element={[<Navbar key={1} />, <Color key={2} />, <Wheel key={3} />, <Footer key={4} />]} />
+          <Route path='/color-wheel/:id' element={[<Navbar key={1} />,<Scheme key={2} />, <Footer key={3} />]} />
+        </Routes>
         <Routes>
-        <Route exact path="/" element={<RecordList />} />
+          <Route path='/review' element={[<Navbar key={1} />, <BlogReview key={2} />]} />
+          <Route path='/review/:slug' element={[<Navbar key={1} />, <Posts key={2} />]} />
+        </Routes>
+        {/* <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
-        <Route path='/review' element={[<Navbar key={1} />, <BlogReview key={2} />]} />
-        <Route path='/review/:slug' element={[<Navbar key={1} />, <Posts key={2} />]} />
-      </Routes>
-      {/* <Footer /> */}
+        </Routes> */}
     </HelmetProvider>
   );
   
