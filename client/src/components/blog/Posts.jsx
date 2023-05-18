@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router';
-import parse from 'html-react-parser';
-import './styles.css';
-import Sidebar from './sidebar/Sidebar';
-import Footer from '../Footer';
-import InstagramEmbed from './InstagramEmbed';
-import Services from '../color/schemes/Services';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect, useState, useRef } from "react";
+import { useParams, useNavigate } from "react-router";
+import parse from "html-react-parser";
+import "./styles.css";
+import Sidebar from "./sidebar/Sidebar";
+import Footer from "../Footer";
+import InstagramEmbed from "./InstagramEmbed";
+import Services from "../color/schemes/Services";
+import { Helmet } from "react-helmet-async";
 
 function Posts() {
   const [records, setRecords] = useState([]);
@@ -20,83 +20,75 @@ function Posts() {
     setInsta(true);
   });
 
-  // load up instagram feed 
- const InstagramEmbed = () => {
-  // setInsta to true once the DOMContentLoaded
-  useEffect(() => {
+  // load up instagram feed
+  const InstagramEmbed = () => {
+    // setInsta to true once the DOMContentLoaded
+    useEffect(() => {
       if (insta) {
-            const instaScript = document.createElement("script");
-            const pinScript = document.createElement("script");
-            const faScript = document.createElement("script");
-            instaScript.src = "https://www.instagram.com/embed.js";
-            pinScript.src = "//assets.pinterest.com/js/pinit.js";
-            faScript.src = "https://use.fontawesome.com/releases/v5.15.3/js/all.js";
-            document.body.appendChild(instaScript);
-            document.body.appendChild(pinScript);
-            document.body.appendChild(faScript);
-          } else {
-            setTimeout(() => {
-              const instaScript = document.createElement("script");
-              const pinScript = document.createElement("script");
-              const faScript = document.createElement("script");
-              instaScript.src = "https://www.instagram.com/embed.js";
-              pinScript.src = "//assets.pinterest.com/js/pinit.js";
-              faScript.src = "https://use.fontawesome.com/releases/v5.15.3/js/all.js";
-              document.body.appendChild(instaScript);
-              document.body.appendChild(pinScript);
-              document.body.appendChild(faScript);
-            }, 1200);
-          }
-      
-  }, [insta]);
+        const instaScript = document.createElement("script");
+        const pinScript = document.createElement("script");
+        const faScript = document.createElement("script");
+        instaScript.src = "https://www.instagram.com/embed.js";
+        pinScript.src = "//assets.pinterest.com/js/pinit.js";
+        faScript.src = "https://use.fontawesome.com/releases/v5.15.3/js/all.js";
+        document.body.appendChild(instaScript);
+        document.body.appendChild(pinScript);
+        document.body.appendChild(faScript);
+      } else {
+        setTimeout(() => {
+          const instaScript = document.createElement("script");
+          const pinScript = document.createElement("script");
+          const faScript = document.createElement("script");
+          instaScript.src = "https://www.instagram.com/embed.js";
+          pinScript.src = "//assets.pinterest.com/js/pinit.js";
+          faScript.src =
+            "https://use.fontawesome.com/releases/v5.15.3/js/all.js";
+          document.body.appendChild(instaScript);
+          document.body.appendChild(pinScript);
+          document.body.appendChild(faScript);
+        }, 1200);
+      }
+    }, [insta]);
 
-  return null;
-};
+    return null;
+  };
 
-
-setTimeout(() =>{
-  
-})
-const params = useParams();
-const navigate = useNavigate();
+  setTimeout(() => {});
+  const params = useParams();
+  const navigate = useNavigate();
 
   // This method fetches the records from the database.
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
-
       async function getRecords() {
         const id = params.slug.toString();
         const response = await fetch(
           `http://localhost:5001/record/${params.slug.toString()}`
         );
-  
+
         if (!response.ok) {
           const message = `An error occured: ${response.statusText}`;
           window.alert(message);
           return;
         }
-  
+
         const record = await response.json();
         if (!record) {
           window.alert(`Record with id ${id} not found`);
           navigate("/");
           return;
         }
-  
+
         setRecords(record);
         setIsLoading(false);
       }
-  
+
       getRecords();
-  
+
       return;
-
-    }, 900)
-    
+    }, 900);
   }, []);
-
- 
 
   // parse the html from the content
   function parsedContent() {
@@ -135,34 +127,38 @@ const navigate = useNavigate();
 
   // Find the ad div and style
   useEffect(() => {
-    const hiddenAdAfter = document.querySelector("#bodyDiv > div:nth-child(3)")
-    const hiddenAdBefore =document.querySelector("#bodyDiv > div.mblog-opening > p:nth-child(7) > a:nth-child(5)")
+    const hiddenAdAfter = document.querySelector("#bodyDiv > div:nth-child(3)");
+    const hiddenAdBefore = document.querySelector(
+      "#bodyDiv > div.mblog-opening > p:nth-child(7) > a:nth-child(5)"
+    );
     if (hiddenAdAfter && hiddenAdBefore) {
-      const hiddenAdDivBefore = hiddenAdBefore.nextSibling.parentElement.parentElement.nextSibling.nextSibling
-      const hiddenAdDivAfter = hiddenAdAfter.previousSibling.previousSibling
+      const hiddenAdDivBefore =
+        hiddenAdBefore.nextSibling.parentElement.parentElement.nextSibling
+          .nextSibling;
+      const hiddenAdDivAfter = hiddenAdAfter.previousSibling.previousSibling;
       if (hiddenAdDivBefore === hiddenAdDivAfter) {
-        hiddenAdDivBefore.classList.add('newAdDivClass')
-      } 
-    } 
-  },[isLoading])
-
-// Change text format of h2's that are too large
-useEffect(() => {
-  // Get all of the H2 elements that match the selector `.cwunew h2`
-  const headings = document.querySelectorAll('.cwunew h2');
-  // Iterate over the elements and change the text format of each element
-  for (const heading of headings) {
-    // Split the words by any space character
-    const words = heading.textContent.split(' ');
-    // For each word capitalize the 1st character then append the 1st character to the remaining lowercase characters
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        hiddenAdDivBefore.classList.add("newAdDivClass");
+      }
     }
-    // Rejoin the words with a space in between each word
-    heading.textContent = words.join(' ');
-  }
-}, [isLoading]);
+  }, [isLoading]);
 
+  // Change text format of h2's that are too large
+  useEffect(() => {
+    // Get all of the H2 elements that match the selector `.cwunew h2`
+    const headings = document.querySelectorAll(".cwunew h2");
+    // Iterate over the elements and change the text format of each element
+    for (const heading of headings) {
+      // Split the words by any space character
+      const words = heading.textContent.split(" ");
+      // For each word capitalize the 1st character then append the 1st character to the remaining lowercase characters
+      for (let i = 0; i < words.length; i++) {
+        words[i] =
+          words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+      }
+      // Rejoin the words with a space in between each word
+      heading.textContent = words.join(" ");
+    }
+  }, [isLoading]);
 
   // Change width of image containers
   function changeImgWidth() {
@@ -175,7 +171,7 @@ useEffect(() => {
       img.style.maxWidth = "100%";
     });
   }
-  setTimeout(changeImgWidth, 1)
+  setTimeout(changeImgWidth, 1);
 
   // style the ad div's
   function styleAdDiv() {
@@ -184,12 +180,12 @@ useEffect(() => {
     // Make sure the ad divs exist then turn them into an array and for each one style the parent div
     if (cr_ad.length > 0) {
       Array.from(cr_ad).forEach((el) => {
-        el.parentElement.style.marginBottom = '1rem';
-        el.parentElement.style.border = '0.1rem solid #676766';
-        el.parentElement.style.boxShadow = '1px 4px 9px 1px #676766';
-        el.parentElement.style.padding = '1rem';
-        el.parentElement.style.borderRadius = '1rem';
-      })
+        el.parentElement.style.marginBottom = "1rem";
+        el.parentElement.style.border = "0.1rem solid #676766";
+        el.parentElement.style.boxShadow = "1px 4px 9px 1px #676766";
+        el.parentElement.style.padding = "1rem";
+        el.parentElement.style.borderRadius = "1rem";
+      });
     } else {
       return;
     }
@@ -267,13 +263,13 @@ useEffect(() => {
   // todo:
   // 1. search tags collection for tag ids mentioned in records.tags
   // Get tags function
-  function getTags() {
-    const postTags = records.tags
-  
-    async function theTags() {
-      const response = await fetch(
-        `http://localhost:5001/tags/`
-      );
+  let tags = [];
+  // console.log(tags)
+  async function getTags() {
+    if (!isLoading) {
+      const postTags = records.tags;
+
+      const response = await fetch(`http://localhost:5001/tags/`);
 
       if (!response.ok) {
         const message = `An error occured: ${response.statusText}`;
@@ -286,26 +282,52 @@ useEffect(() => {
         window.alert(`no tags`);
         return;
       }
-      
+
       // how to get the value out of this?
       postTags.forEach((el) => {
-           const newTag = allTags.find(tag => tag.id === el)
-           console.log(newTag.name)
-       })  
-      
+        const newTag = allTags.find((tag) => tag.id === el);
+        const newNameTag = newTag.name;
+        //  console.log(newTag.name)
+        tags.push(newNameTag);
+      });
+    } else {
+      console.log("still loading");
     }
-    theTags();
+    // console.log(tags)
+    return tags;
   }
+  getTags();
+  
+  async function metaTag() {
+    if(!isLoading) {
+
+      await setTimeout(() => {
+          tags.forEach((el) => {
+            const newMeta = document.createElement('meta');
+            newMeta.setAttribute('property', 'article:tag');
+            newMeta.content = el;
+            document.getElementsByTagName('head')[0].appendChild(newMeta)
+            console.log(newMeta)
+            return (
+              `<meta property="article:tag" content=${el}>`
+            ) 
+          })
+        }, 800)
+    } else {
+      console.log('meta tag func still loading')
+    }
+    }
+metaTag()
+
 
   return (
     <>
-    {isLoading ? (
-      <h1>Loading...</h1>
-    ) : (
-    <Helmet>
-      <title>{records.title.rendered || records.title}</title>
-      {getTags()}
-      {/* <meta name='description' content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Helmet>
+          <title>{records.title.rendered || records.title}</title>
+          {/* <meta name='description' content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={`${color.name} coordinating colors and color schemes` } />
@@ -319,33 +341,35 @@ useEffect(() => {
       <meta name="twitter:description" content={`Color schemes and coordinating colors for Sherwin-Williams ${color.name} ${color.code}`} />
       <meta name="twitter:label1" content="Time to read" />
       <meta name="twitter:data1" content="Less than a minute" /> */}
-    </Helmet>
-
-    )}
-    <div id="wrapper" className="w-full h-full">
-      {/* <Navbar /> */}
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div id="containerDiv" className="max-w-[100%] h-full pt-44">
-          <div id='mainAndSideDiv' className='block lg:flex xl:mx-8'>
-          <div
-            id="contentDiv"
-            className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2 xl:w-[1034px] xl:mx-0 xl:mr-8"
-          >
-            <div id="titleDiv" className="mb-2 sm:my-8">
-              <h1 id='header' className="text-4xl">
-                {records.title.rendered || records.title}
-              </h1>
-            </div>
-            <div id="metaDiv" className="flex flex-row justify-between mb-2">
-              <div id="dateDiv">{flipDate()}</div>
-              <div id="authorDiv">{authorName()}</div>
-            </div>
-            <div id="postDiv">
+        </Helmet>
+      )}
+      <div id="wrapper" className="w-full h-full">
+        {/* <Navbar /> */}
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div id="containerDiv" className="max-w-[100%] h-full pt-44">
+            <div id="mainAndSideDiv" className="block lg:flex xl:mx-8">
               <div
-                id="bodyDiv"
-                className="[&_h2]:text-3xl
+                id="contentDiv"
+                className="max-w-[100%] lg:w-[75%] text-center mx-2 mb-2 xl:w-[1034px] xl:mx-0 xl:mr-8"
+              >
+                <div id="titleDiv" className="mb-2 sm:my-8">
+                  <h1 id="header" className="text-4xl">
+                    {records.title.rendered || records.title}
+                  </h1>
+                </div>
+                <div
+                  id="metaDiv"
+                  className="flex flex-row justify-between mb-2"
+                >
+                  <div id="dateDiv">{flipDate()}</div>
+                  <div id="authorDiv">{authorName()}</div>
+                </div>
+                <div id="postDiv">
+                  <div
+                    id="bodyDiv"
+                    className="[&_h2]:text-3xl
                            [&_h3]:!text-2xl 
                            [&_p]:text-justify [&_p]:my-2 text-center [&_p]:leading-8
                            lg:[&_p]:text-left
@@ -356,23 +380,26 @@ useEffect(() => {
                            sm:[&_p]:my-4
                            sm:[&_h4]:text-xl
                            "
+                  >
+                    {parsedContent()}
+                  </div>
+                </div>
+              </div>
+              <div
+                id="sidebarDiv"
+                className="hidden lg:flex w-[25%] flex-col items-center justify-center mr-2 mt-60 xl:w-[590px] xl-mr-0"
               >
-                {parsedContent()}
+                <Sidebar />
               </div>
             </div>
+            <Services />
+            <Footer />
+            <InstagramEmbed />
           </div>
-          <div id="sidebarDiv" className="hidden lg:flex w-[25%] flex-col items-center justify-center mr-2 mt-60 xl:w-[590px] xl-mr-0">
-          <Sidebar/>
-          </div>
-          </div>
-          <Services />
-          <Footer />
-          <InstagramEmbed />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 }
 
-export default Posts
+export default Posts;
