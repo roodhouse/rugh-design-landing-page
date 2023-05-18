@@ -1,0 +1,28 @@
+.readmorelink {
+    display: none;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.paginationContainer li {
+    padding-left: .75rem;
+    padding-right: .75rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+}
+
+.selected {
+    border: 1px solid;
+    border-radius: 100%;
+    background-color: rgba(229, 193, 193, 0.19);
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms; */
+    color: #676766;
+}
+
+.selected a:hover {
+    color: #676766;
+}
