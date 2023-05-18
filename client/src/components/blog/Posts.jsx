@@ -8,6 +8,9 @@ import InstagramEmbed from "./InstagramEmbed";
 import Services from "../color/schemes/Services";
 import { Helmet } from "react-helmet-async";
 
+// todo: 
+// 1. add more of the meta tags based on original blog
+
 function Posts() {
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -260,11 +263,8 @@ function Posts() {
     }, 1000);
   }
 
-  // todo:
-  // 1. search tags collection for tag ids mentioned in records.tags
   // Get tags function
   let tags = [];
-  // console.log(tags)
   async function getTags() {
     if (!isLoading) {
       const postTags = records.tags;
@@ -283,24 +283,20 @@ function Posts() {
         return;
       }
 
-      // how to get the value out of this?
       postTags.forEach((el) => {
         const newTag = allTags.find((tag) => tag.id === el);
         const newNameTag = newTag.name;
-        //  console.log(newTag.name)
         tags.push(newNameTag);
       });
     } else {
       console.log("still loading");
     }
-    // console.log(tags)
     return tags;
   }
   getTags();
   
   async function metaTag() {
     if(!isLoading) {
-
       await setTimeout(() => {
           tags.forEach((el) => {
             const newMeta = document.createElement('meta');
