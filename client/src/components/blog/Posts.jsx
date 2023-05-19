@@ -64,7 +64,7 @@ function Posts() {
       async function getRecords() {
         const id = params.slug.toString();
         const response = await fetch(
-          `http://localhost:5001/record/${params.slug.toString()}` || `https://rugh.design:5001/record/${params.slug.toString()}`
+          `http://localhost:5001/record/${params.slug.toString()}` || `https://rugh.design:5001/record/${params.slug.toString()}` || `${process.env.URL}:5001/record/${params.slug.toString()}`
         );
 
         if (!response.ok) {
@@ -266,7 +266,7 @@ function Posts() {
     if (!isLoading) {
       const postTags = records.tags;
 
-      const response = await fetch(`http://localhost:5001/tags/` || `https://rugh.design:5001/tags`);
+      const response = await fetch(`http://localhost:5001/tags/` || `https://rugh.design:5001/tags` || `${process.env.URL}:/5001/tags`);
 
       if (!response.ok) {
         const message = `An error occured: ${response.statusText}`;
@@ -316,7 +316,7 @@ let categories = []
 async function getCategories() {
   if (!isLoading) {
     const postCategories = records.categories
-    const response = await fetch(`http://localhost:5001/categories/` || `https://rugh.design:5001/categories`);
+    const response = await fetch(`http://localhost:5001/categories/` || `https://rugh.design:5001/categories` || `${process.env.URL}:/5001/categories`);
 
     if(!response.ok) {
       const message = `An error occured: ${response.statusText}`;
