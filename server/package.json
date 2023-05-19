@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,8 @@
     "express": "^4.18.2",
     "mongodb": "^4.0.0",
     "mongoose": "^7.0.5",
+    "nodemon": "^2.0.22",
+    "react-scripts": "^5.0.1",
     "request": "^2.88.2"
   }
 }
