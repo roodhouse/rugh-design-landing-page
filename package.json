@@ -4,8 +4,7 @@
   "description": "# Getting Started with Create React App",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "concurrently \"cd client && npm run build\" \"cd server && npm run watch\""
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
