@@ -25,7 +25,7 @@ export default function Create() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newPerson = { ...form };
 
-    await fetch("http://localhost:5001/record/add" || `https://rugh.design:5001/record/add` || `${process.env.URL}:/5001/record/add`, {
+    await fetch(`https://rugh.design:5001/record/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
