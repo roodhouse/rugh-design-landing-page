@@ -26,20 +26,20 @@ function Subscribe() {
                 lastName: data.lastName,
                 email: data.email,
             }
-        //     await fetch(`http://localhost:5001/record/sub`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(newSub)
-        // })
-        await fetch(`https://rugh.design:27015/record/sub`, {
+            await fetch(`http://localhost:5001/record/sub`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newSub)
         })
+        // await fetch(`https://rugh.design:27015/record/sub`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newSub)
+        // })
         .catch(error => {
             window.alert(error);
             return;

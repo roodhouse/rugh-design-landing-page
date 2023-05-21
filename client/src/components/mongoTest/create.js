@@ -32,6 +32,13 @@ export default function Create() {
       },
       body: JSON.stringify(newPerson),
     })
+    // await fetch(`https://rugh.design:27015/record/add`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newPerson),
+    // })
     .catch(error => {
       window.alert(error);
       return;
