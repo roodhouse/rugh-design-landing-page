@@ -1,7 +1,11 @@
-
-const { MongoClient } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const fs = require('fs');
 const Db = process.env.ATLAS_URI;
+const credentials = process.env.CRED
 const client = new MongoClient(Db, {
+  sslKey: credentials,
+  sslCert: credentials,
+  serverApi: ServerApiVersion.v1,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
