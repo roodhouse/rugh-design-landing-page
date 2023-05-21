@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+X509-cert-2593551621923374737.pem
 config.env
 # dependencies
 /node_modules
