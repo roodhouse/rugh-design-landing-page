@@ -60,7 +60,14 @@ function CreatePost() {
         form['content'] = value;
         const newPost = { ...form };
 
-        await fetch(`http://localhost:5001/record/add`, {
+        // await fetch(`http://localhost:5001/record/add`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newPost),
+        // })
+        await fetch(`https://rugh.design:27015/record/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

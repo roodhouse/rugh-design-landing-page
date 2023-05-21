@@ -15,7 +15,8 @@ export default function BlogList() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://localhost:5001/record`);
+      // const response = await fetch(`http://localhost:5001/record`);
+      const response = await fetch(`https://rugh.design:27015/record`);
 
       if (!response.ok) {
         const message = `An error occured: ${response.statusText}`;

@@ -37,7 +37,8 @@ const modules = {
   useEffect(() => {
     async function fetchData() {
       const id = params.id.toString();
-      const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
+      // const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
+      const response = await fetch(`https://rugh.design:27015/record/${params.id.toString()}`);
 
       if (!response.ok) {
         const message = `An error has occured: ${response.statusText}`;
@@ -84,7 +85,15 @@ const modules = {
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5001/update/${params.id}`, {
+    // await fetch(`http://localhost:5001/update/${params.id}`, {
+    //   method: "POST",
+    //   body: JSON.stringify(editedPost),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // });
+
+    await fetch(`https://rugh.design:27015/update/${params.id}`, {
       method: "POST",
       body: JSON.stringify(editedPost),
       headers: {
