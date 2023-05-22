@@ -1,4 +1,9 @@
 const express = require("express");
+const app = express();
+const cors = require('cors');
+
+app.use(cors());
+
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -13,10 +18,6 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(async function (req, res) {
-  // Add CORS headers
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET');
-  
   let db_connect = dbo.getDb("blog");
   db_connect
     .collection("wpblog")
@@ -26,6 +27,8 @@ recordRoutes.route("/record").get(async function (req, res) {
       res.json(data);
     });
 });
+
+app.use('/record', recordRoutes)
 
 // This section will help you get a list of all the tags.
 recordRoutes.route("/tags").get(async function (req, res) {
