@@ -13,6 +13,10 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(async function (req, res) {
+  // Add CORS headers
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET');
+  
   let db_connect = dbo.getDb("blog");
   db_connect
     .collection("wpblog")
