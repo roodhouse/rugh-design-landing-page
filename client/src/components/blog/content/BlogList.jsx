@@ -16,7 +16,8 @@ export default function BlogList() {
   useEffect(() => {
     async function getRecords() {
       // const response = await fetch(`http://localhost:5001/record`);
-      const response = await fetch(`https://rugh.design:5001/record`, {mode: 'no-cors'});
+      const response = await fetch(`https://rugh.design:5001/record`);
+      console.log(response)
       if (!response.ok) {
         const message = `An error occured: ${response.statusText}`;
         window.alert(message);
