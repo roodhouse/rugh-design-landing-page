@@ -1,9 +1,4 @@
 const express = require("express");
-const app = express();
-const cors = require('cors');
-
-app.use(cors());
-
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -28,7 +23,6 @@ recordRoutes.route("/record").get(async function (req, res) {
     });
 });
 
-app.use('/record', recordRoutes)
 
 // This section will help you get a list of all the tags.
 recordRoutes.route("/tags").get(async function (req, res) {
