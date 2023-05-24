@@ -28,7 +28,6 @@ jobs:
     - run: npm run build --if-present
   
   build_server:
-    needs: build
     runs-on: self-hosted
     defaults:
       run:
