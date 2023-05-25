@@ -22,7 +22,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: node_modules
-        key: ${{ runner.os }}-${{ steps.checkout.outputs.sha }}
+        key: ${{ runner.os }}-${{ steps.checkout.outputs.sha }}-${{ job.name }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -43,7 +43,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: node_modules
-        key: ${{ runner.os }}-${{ steps.checkout.outputs.sha }}
+        key: ${{ runner.os }}-${{ steps.checkout.outputs.sha }}-${{ job.name }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with: 
