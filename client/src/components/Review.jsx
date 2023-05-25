@@ -19,7 +19,7 @@ function Review() {
                 <div className="p-6 flex flex-col items-center">
                     <p className='text-4xl text-[#676766] font-bold inline border-b-4 border-[#E5C1C1]'>Color Reviews</p>
                     <p className='py-4'>Read my color reviews and transform your space.</p>
-                    <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='https://www.rughdesign.com/review'>Read more</a>
+                    <a className='text-[#676766] group border-2 px-6 py-3 my-2 flex items-center hover:bg-[#E5C1C1] hover:border-[#E5C1C1] hover:text-white' href='/review'>Read more</a>
                 </div>
             </div>
         </div>
