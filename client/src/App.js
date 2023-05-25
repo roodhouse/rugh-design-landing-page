@@ -21,6 +21,7 @@ import Navigation from './components/mongoTest/navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import BlogReview from './components/blog/Review';
 import Posts from './components/blog/Posts';
+import Login from './components/login/Login';
 
 function App() { 
   const helmetContext = {};
@@ -49,6 +50,9 @@ function App() {
         <Routes>
           <Route path='/review' element={[<Navbar key={1} />, <BlogReview key={2} />]} />
           <Route path='/review/:slug' element={[<Navbar key={1} />, <Posts key={2} />]} />
+        </Routes>
+        <Routes>
+          <Route path='/login' element={<Login />} />
         </Routes>
         {/* <Routes>
         <Route path="/dashboard" element={<Dashboard />} />

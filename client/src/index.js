@@ -16,6 +16,7 @@ import {
 import Edit from './components/mongoTest/edit';
 import BlogReview from './components/blog/Review'
 import Posts from './components/blog/Posts';
+import Login from './components/login/Login';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           }
         ]
       },
+      {
+        path: "login",
+        element: <Login />
+      }
     ],
   },
 ]);
