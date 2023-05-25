@@ -27,6 +27,6 @@ jobs:
     - run: npm ci
     - run: cd server && npm ci && sudo cp /home/config.env /home/ubuntu/react/_work/rugh-design-landing-page/rugh-design-landing-page/server/config.env
     - run: cd .. && cd rugh-design-landing-page/client && npm ci && pwd
-    - run: CI=false npm run build
+    - run: npm run build
     - run: sudo systemctl start run_server.service
     
