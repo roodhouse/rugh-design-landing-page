@@ -52,7 +52,7 @@ function App() {
           <Route path='/review/:slug' element={[<Navbar key={1} />, <Posts key={2} />]} />
         </Routes>
         <Routes>
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={[<Navbar key={1} />,<Login key={2} />, <Footer key={3} />]} />
         </Routes>
         {/* <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
