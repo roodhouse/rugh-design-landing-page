@@ -104,6 +104,19 @@ recordRoutes.route("/record/sub").post(function (req, response) {
   });
 });
 
+// This section will help you create a registered user.
+recordRoutes.route("/record/reg").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myobj = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  db_connect.collection("users").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 // This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
