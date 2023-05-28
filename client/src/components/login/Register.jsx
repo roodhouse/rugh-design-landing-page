@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+// todo: 
+// 1. confirm validations
+// 2. make sure first and 2nd password match
+// 3. hash and salt password before it hits db
+
 function Register() {
   const {
     register,
@@ -52,6 +57,7 @@ function Register() {
         })
         setValue('email', '')
         setValue('password', '')
+        setValue('confirmPassword', '')
       }, onError)}>
         <div id="regFormDiv" className="flex flex-col items-center px-5">
           <div id="email" className="w-full flex flex-col">
