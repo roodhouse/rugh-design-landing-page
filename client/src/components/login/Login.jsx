@@ -4,9 +4,8 @@ import { useForm } from 'react-hook-form';
 
 function Login() {
     const { register, handleSubmit, setValue, formState: {errors} } = useForm({defaultValues: {
-        firstName: '',
-        lastName: '',
-        email: ''
+        username: '',
+        password: '',
     }});
 
     const onError = () => {
@@ -21,7 +20,13 @@ function Login() {
         <div id='subscribeTextDiv' className='text-center py-4'>
             <p>greatness awaits</p>
         </div>
-        <form>
+        <form onSubmit={handleSubmit( async (data) => {
+            console.log(data.password)
+            console.log(data.username)
+
+            const response = await fetch('https://rugh.design/5001/users');
+            console.log(response)
+        })}>
         <div id="subscribeFormDiv" className='flex flex-col items-center px-5'>
             <div id="username" className='w-full flex flex-col'>
                 <input 

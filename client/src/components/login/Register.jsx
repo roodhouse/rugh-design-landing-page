@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
+
+
+
 // todo: 
 // 1. confirm validations
 // 2. make sure first and 2nd password match
@@ -25,6 +30,7 @@ function Register() {
     console.log("wrong");
   };
 
+
   return (
     <div
       id="registerDiv"
@@ -39,9 +45,12 @@ function Register() {
         <p>let's go</p>
       </div>
       <form onSubmit={handleSubmit( async (data) => {
+        // hash the user password
+        var hash = bcrypt.hashSync(data.password, salt)
+    
         const newReg = {
             email: data.email,
-            password: data.password
+            password: hash
         }
 
         await fetch(`https://rugh.design:5001/record/reg`, {
