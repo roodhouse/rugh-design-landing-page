@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+var bcrypt = require('bcryptjs');
 
 function Login() {
     const { register, handleSubmit, setValue, formState: {errors} } = useForm({defaultValues: {
@@ -21,12 +22,17 @@ function Login() {
             <p>greatness awaits</p>
         </div>
         <form onSubmit={handleSubmit( async (data) => {
-            console.log(data.password)
-            console.log(data.username)
-
-            const response = await fetch('http://localhost:5002/reg');
-            const allReg = await response.json();
-            console.log(allReg)
+            const response = await fetch(`http://localhost:5002/reg/${data.username}`);
+            const theUser = await response.json();
+        
+            let password =  data.password;
+            let hash = theUser.password;
+            // compare the user entered password to the hashed password in database
+            if (bcrypt.compareSync(password, hash)) {
+                console.log('the same and logged in baby')
+            } else {
+                console.log('not the same, try again sir.')
+            }
 
         })}>
         <div id="subscribeFormDiv" className='flex flex-col items-center px-5'>

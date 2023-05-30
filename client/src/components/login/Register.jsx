@@ -53,7 +53,7 @@ function Register() {
             password: hash
         }
 
-        await fetch(`https://rugh.design:5001/record/reg`, {
+        await fetch(`https://rugh.design:5001/reg`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
