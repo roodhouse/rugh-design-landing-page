@@ -105,7 +105,7 @@ recordRoutes.route("/record/sub").post(function (req, response) {
 });
 
 // This section will help you create a registered user.
-recordRoutes.route("/record/reg").post(function (req, response) {
+recordRoutes.route("/reg").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     email: req.body.email,
