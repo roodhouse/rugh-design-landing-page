@@ -24,8 +24,10 @@ function Login() {
             console.log(data.password)
             console.log(data.username)
 
-            const response = await fetch('https://rugh.design/5001/users');
-            console.log(response)
+            const response = await fetch('http://localhost:5002/reg');
+            const allReg = await response.json();
+            console.log(allReg)
+
         })}>
         <div id="subscribeFormDiv" className='flex flex-col items-center px-5'>
             <div id="username" className='w-full flex flex-col'>
