@@ -1,16 +1,46 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router";
+import jwt_decode from 'jwt-decode';
+
+
+// todo: refactor token code to work in the correct places
+
+const jwt = require('jsonwebtoken');
+const secret = 'mysecretssshhhhhhh';
+const expiration = '2h';
+
+const testObj = {
+  username: 'test',
+  password: 'test'
+}
+
+function signToken({ username, password}) {
+    const payload = { username, password };
+    const test = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+    console.log(test)
+    const decode = jwt_decode(test)
+    console.log(decode);
+    return test;
+  }
+
+  signToken(testObj)
+
+
 var bcrypt = require('bcryptjs');
 
 function Login() {
+    const navigate = useNavigate();
     const { register, handleSubmit, setValue, formState: {errors} } = useForm({defaultValues: {
         username: '',
         password: '',
     }});
 
     const onError = () => {
+
         console.log('wrong')
+        // navigate("/");
     }
     
   return (
@@ -30,8 +60,16 @@ function Login() {
             // compare the user entered password to the hashed password in database
             if (bcrypt.compareSync(password, hash)) {
                 console.log('the same and logged in baby')
+                // navigate('/dashboard') 
+                // var token = "eyJ0eXAiO.../// jwt token";
+                // var decoded = jwt_decode(token);
+                
+                // console.log(decoded);
+
+                
+
             } else {
-                console.log('not the same, try again sir.')
+                onError();
             }
 
         })}>

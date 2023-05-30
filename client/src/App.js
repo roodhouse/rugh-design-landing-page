@@ -56,11 +56,11 @@ function App() {
           <Route path='/login' element={[<Navbar key={1} />,<Login key={2} />, <Footer key={3} />]} />
           <Route path='/register' element={[<Navbar key={1} />,<Register key={2} />, <Footer key={3} />]} />
         </Routes>
-        {/* <Routes>
+        <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
-        </Routes> */}
+        </Routes>
     </HelmetProvider>
   );
   

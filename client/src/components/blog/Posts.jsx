@@ -51,7 +51,7 @@ function Posts() {
     }, [insta]);
 
     return null;
-  };
+  }; 
 
   setTimeout(() => {});
   const params = useParams();
