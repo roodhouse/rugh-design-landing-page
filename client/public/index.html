@@ -5,19 +5,26 @@
     <link rel="icon" href="%PUBLIC_URL%/final-paint-swatch.jpeg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="robots" content="index, follow"/>
+    <meta name="robots" content="index, follow" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/final-paint-swatch.jpeg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-0RQP1M1KQZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0RQP1M1KQZ");
+    </script>
+    <script id="react-dotenv" src="./env.js"></script>
   </head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RQP1M1KQZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-0RQP1M1KQZ');
-  </script>
   <body>
     <div id="root"></div>
   </body>
