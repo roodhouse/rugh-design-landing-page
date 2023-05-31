@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
@@ -6,12 +6,14 @@ import jwt_decode from 'jwt-decode';
 
 
 // todo: refactor token code to work in the correct places
-//       save token in local storage
-//       use token to allow access to certain pages
+//       secure the secret
+
 
 const jwt = require('jsonwebtoken');
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
+
+console.log(secret)
 
 var bcrypt = require('bcryptjs');
 
@@ -25,7 +27,7 @@ function Login() {
     const onError = () => {
 
         console.log('wrong')
-        // navigate("/");
+        navigate("/");
     }
     
   return (

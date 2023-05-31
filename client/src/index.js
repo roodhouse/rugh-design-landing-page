@@ -19,6 +19,7 @@ import Posts from './components/blog/Posts';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 
+
 const router = createBrowserRouter([
   {
     path: "*",
