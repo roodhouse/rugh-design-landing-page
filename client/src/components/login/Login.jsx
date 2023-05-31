@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
@@ -6,27 +6,12 @@ import jwt_decode from 'jwt-decode';
 
 
 // todo: refactor token code to work in the correct places
+//       save token in local storage
+//       use token to allow access to certain pages
 
 const jwt = require('jsonwebtoken');
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
-
-const testObj = {
-  username: 'test',
-  password: 'test'
-}
-
-function signToken({ username, password}) {
-    const payload = { username, password };
-    const test = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-    console.log(test)
-    const decode = jwt_decode(test)
-    console.log(decode);
-    return test;
-  }
-
-  signToken(testObj)
-
 
 var bcrypt = require('bcryptjs');
 
@@ -57,20 +42,37 @@ function Login() {
         
             let password =  data.password;
             let hash = theUser.password;
+            let role = theUser.role
             // compare the user entered password to the hashed password in database
             if (bcrypt.compareSync(password, hash)) {
                 console.log('the same and logged in baby')
-                // navigate('/dashboard') 
-                // var token = "eyJ0eXAiO.../// jwt token";
-                // var decoded = jwt_decode(token);
-                
-                // console.log(decoded);
+            
+                const user = {
+                    username: data.username,
+                    role: theUser.role || 'standard'
+                }
 
+                function signToken({ username, role }) {
+                    const payload = { username, role };
+                    const test = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+                    const decode = jwt_decode(test)
+            
+                    localStorage.setItem('token', test);
+                    return test;
+                  }
                 
+                  signToken(user)
+                  if(theUser.role === 'admin'){
+                    navigate('/dashboard') 
+                  } else {
+                    navigate('/')
+                  }     
 
             } else {
                 onError();
             }
+
+           
 
         })}>
         <div id="subscribeFormDiv" className='flex flex-col items-center px-5'>

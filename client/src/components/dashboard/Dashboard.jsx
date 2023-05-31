@@ -2,7 +2,11 @@ import React from 'react'
 import NavBar from './NavBar';
 import Menu from './Menu';
 import RecordList from '../mongoTest/recordList';
-import './styles.css'
+import './styles.css';
+import jwt_decode from 'jwt-decode';
+
+const token = localStorage.getItem('token');
+console.log(token)
 
 function Dashboard() {
   return (
