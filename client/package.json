@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
     "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
     "bson-objectid": "^2.0.4",
@@ -66,7 +67,9 @@
     ]
   },
   "react-dotenv": {
-    "whitelist": ["JWT"]
+    "whitelist": [
+      "JWT"
+    ]
   },
   "devDependencies": {
     "assert": "^2.0.0",

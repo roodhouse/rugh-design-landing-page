@@ -2,13 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
-import jwt_decode from 'jwt-decode';
 import env from 'react-dotenv';
+import 'animate.css';
 
 console.log(env.JWT)
 
 // todo: refactor token code to work in the correct places
-//       secure the secret
+//       secure the secret - done? chage jwt secret
+//       lock down other pages
 
 const jwt = require('jsonwebtoken');
 const secret = env.JWT;
@@ -30,6 +31,27 @@ function Login() {
         console.log('wrong')
         navigate("/");
     }
+
+    const handleEmpty = () => {
+        if(errors.password && !errors.username) {
+            document.getElementById('password').classList.add('animate__animated', 'animate__headShake');
+            document.getElementById('emptyPassword').innerHTML = errors.password.message;
+            
+        } else if (errors.username && !errors.password) {
+            document.getElementById('username').classList.add('animate__animated', 'animate__headShake');
+            document.getElementById('emptyUsername').innerHTML = errors.username.message;
+        }
+
+        else if(errors.username && errors.password) {
+            document.getElementById('subscribeFormDiv').classList.add('animate__animated', 'animate__headShake');
+            document.getElementById('emptyUsername').innerHTML = errors.username.message;
+            document.getElementById('emptyPassword').innerHTML = errors.password.message;
+        }
+
+        else {
+            return;
+        }
+    }
     
   return (
     <div id='loginDiv' className='w-full p-2 pt-44 border border-solid border-[#676766] rounded-md xl:w-[75%]'>
@@ -45,7 +67,7 @@ function Login() {
         
             let password =  data.password;
             let hash = theUser.password;
-            let role = theUser.role
+
             // compare the user entered password to the hashed password in database
             if (bcrypt.compareSync(password, hash)) {
                 console.log('the same and logged in baby')
@@ -58,7 +80,6 @@ function Login() {
                 function signToken({ username, role }) {
                     const payload = { username, role };
                     const test = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-                    const decode = jwt_decode(test)
             
                     localStorage.setItem('token', test);
                     return test;
@@ -86,7 +107,8 @@ function Login() {
                     placeholder='user name' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2 order-2'
                     />
-                <p>{errors.username?.message}</p>
+                {/* <p id="emptyUsername">{errors.username?.message}</p> */}
+                <p id="emptyUsername">{handleEmpty()}</p>
             </div>
             <div id="password" className='w-full flex flex-col'>
                 <input 
@@ -95,7 +117,7 @@ function Login() {
                     placeholder='password' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2 order-2'
                     />
-                <p>{errors.password?.message}</p>
+                <p id="emptyPassword">{handleEmpty()}</p>
             </div>
             <div id="logSubmit" className='w-full'>
                 <input id='submit' type="submit" name="submit"  className='w-full
