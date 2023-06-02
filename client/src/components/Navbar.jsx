@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,13 +7,14 @@ import Logo from '../assets/RD.svg';
 import {FaBars, FaTimes} from 'react-icons/fa';
 import { Link as NewLink } from "react-router-dom";
 import { AiOutlineDown } from 'react-icons/ai'
-
+import 'animate.css';
 
 
 function Navbar() {
   // hamburger state
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
 
   // color menu item state
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,11 +26,43 @@ function Navbar() {
     setAnchorEl(null);
   };
 
+
+// logo hover state
+  const [hover, setHover] = useState(false)
+  // on hover of logo
+  useEffect(() => {
+    const handleMouseOver = () => {
+      setHover(true)
+      hoverLogo.parentElement.classList.add('animate__animated', 'animate__pulse', 'animate__repeat-3', 'animate__slow')
+    }
+
+    const hoverLogo = document.getElementById('logo');
+    hoverLogo.addEventListener('mouseover', handleMouseOver);
+
+    return () => {
+      hoverLogo.removeEventListener('mouseover', handleMouseOver);
+    }
+  },[])
+  // remove hover of logo
+  useEffect(() => {
+    const handleMouseOut = () => {
+      setHover(false)
+      hoverLogo.parentElement.classList.remove('animate__animated', 'animate__pulse')
+    }
+
+    const hoverLogo = document.getElementById('logo');
+    hoverLogo.addEventListener('mouseleave', handleMouseOut);
+
+    return () => {
+      hoverLogo.removeEventListener('mouseleave', handleMouseOut);
+    }
+  },[])
+
   return (
     <div className="fixed w-full h-[150px] flex justify-between items-center px-4 bg-white z-10">
       {/* logo */}
       <div>
-        <img src={Logo} alt="Rugh Design" />
+        <img id='logo' src={Logo} alt="Rugh Design" />
       </div>
 
       {/* menu */}
