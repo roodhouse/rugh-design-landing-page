@@ -18,7 +18,34 @@ import BlogReview from './components/blog/Review'
 import Posts from './components/blog/Posts';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
+import env from 'react-dotenv';
 
+// Create token for every user that comes to the site
+const jwt = require('jsonwebtoken');
+const secret = env.JWT;
+const expiration = '2h';
+
+const user = {
+  username: 'not logged in user',
+  role: 'notLoggedIn'
+}
+
+const token = localStorage.getItem('token');
+if(token === null) {
+  console.log('from index and null')
+
+  function signToken({ username, role }) {
+    const payload = { username, role };
+    const notLoggedIn = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+
+    localStorage.setItem('token', notLoggedIn)
+    return notLoggedIn
+  }
+
+  signToken(user)
+
+}
+console.log('from index ', token)
 
 const router = createBrowserRouter([
   {

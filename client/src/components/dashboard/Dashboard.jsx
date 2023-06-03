@@ -9,13 +9,7 @@ import { useNavigate } from "react-router";
 function Dashboard() {
   const navigate = useNavigate();
   const hasAccess = Auth.getToken();
-  console.log(hasAccess)
-  if (hasAccess === '') {
-    console.log('not logged in')
-  }
-  console.log(hasAccess.data.role);
-  console.log(hasAccess.data.username);
-
+   
   // This useEffect hook navigates to the "/" route if the user does not have the role "admin".
   useEffect(() => {
     if (hasAccess.data.role !== "admin") {

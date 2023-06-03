@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 const secret = env.JWT;
 const expiration = '2h';
 
-console.log(secret)
+
 
 var bcrypt = require('bcryptjs');
 
