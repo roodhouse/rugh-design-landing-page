@@ -4,8 +4,15 @@ class AuthService {
 
     getToken() {
         const token = localStorage.getItem('token');
-        const decode = jwt_decode(token)
-        return decode;
+        if(!token) {
+            console.log('no token')
+            const decode = '';
+            return decode 
+        } else {
+            const decode = jwt_decode(token)
+            console.log('token found')
+            return decode;
+        }
     }
 }
 

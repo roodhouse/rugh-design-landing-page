@@ -5,8 +5,6 @@ import { useNavigate } from "react-router";
 import env from 'react-dotenv';
 import 'animate.css';
 
-console.log(env.JWT)
-
 // todo: refactor token code to work in the correct places
 //       secure the secret - done? chage jwt secret
 //       lock down other pages
