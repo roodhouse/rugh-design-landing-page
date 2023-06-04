@@ -14,6 +14,11 @@ export default function Edit() {
       console.log("is not admin");
       navigate("/");
     } 
+
+    if (hasAccess.data.role === 'admin') {
+      document.getElementById('wrapper').classList.remove('hidden');
+    }
+
   },[hasAccess.data.role]);
 
   const [form, setForm] = useState({
@@ -118,14 +123,9 @@ const modules = {
     return theAuthor;
   }
 
-  // console.log(form.content)
-  // console.log(form.content.rendered)
-
-  console.log('test from edit')
-
   // This following section will display the form that takes input from the user to update the data.
   return (
-    <div>
+    <div id="wrapper" className="hidden">
       <h3>Update Record</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">

@@ -16,10 +16,14 @@ function Dashboard() {
       console.log("is not admin");
       navigate("/");
     } 
+
+    if (hasAccess.data.role === 'admin') {
+      document.getElementById('wrapper').classList.remove('hidden');
+    }
   },[hasAccess.data.role]);
     
       return (
-        <div id="wrapper">
+        <div className='hidden' id="wrapper">
           <NavBar />
           <div
             id="mainContainer"

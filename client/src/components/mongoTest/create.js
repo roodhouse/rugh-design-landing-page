@@ -14,6 +14,10 @@ export default function Create() {
       console.log("is not admin");
       navigate("/");
     } 
+
+    if (hasAccess.data.role === 'admin') {
+      document.getElementById('wrapper').classList.remove('hidden');
+    }
   },[hasAccess.data.role]);
 
   const [form, setForm] = useState({
@@ -56,7 +60,7 @@ export default function Create() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <div>
+    <div id='wrapper' className="hidden">
       <h3>Create New Record</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
