@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Post from '../dashboard/CreatePost'
+import Auth from "../../utils/auth";
+import Post from '../dashboard/CreatePost';
 
 export default function Create() {
+  const navigate = useNavigate();
+
+  const hasAccess = Auth.getToken();
+   
+  // This useEffect hook navigates to the "/" route if the user does not have the role "admin".
+  useEffect(() => {
+    if (hasAccess.data.role !== "admin") {
+      console.log("is not admin");
+      navigate("/");
+    } 
+
+    if (hasAccess.data.role === 'admin') {
+      document.getElementById('wrapper').classList.remove('hidden');
+    }
+  },[hasAccess.data.role]);
+
   const [form, setForm] = useState({
     name: "",
     position: "",
     level: "",
     content: "",
   });
-  const navigate = useNavigate();
+  
 
   // These methods will update the state properties.
   function updateForm(value) {
@@ -43,7 +60,7 @@ export default function Create() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <div>
+    <div id='wrapper' className="hidden">
       <h3>Create New Record</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">

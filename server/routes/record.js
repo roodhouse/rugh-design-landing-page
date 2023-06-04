@@ -117,6 +117,31 @@ recordRoutes.route("/reg").post(function (req, response) {
   });
 });
 
+// This section will help you get all users
+recordRoutes.route("/reg").get(async function (req, res) {
+  let db_connect = dbo.getDb("blog");
+  db_connect
+    .collection("users")
+    .find({})
+    .toArray()
+    .then((data) => {
+      res.json(data);
+    });
+});
+
+// This section will help you get a single user by email
+recordRoutes.route("/reg/:email").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { email: req.params.email};
+  db_connect
+      .collection("users")
+      .findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+});
+
+
 // This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();

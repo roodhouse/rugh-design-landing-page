@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -16,6 +16,47 @@ import {
 import Edit from './components/mongoTest/edit';
 import BlogReview from './components/blog/Review'
 import Posts from './components/blog/Posts';
+import Login from './components/login/Login';
+import Register from './components/login/Register';
+
+// Create token for every user that comes to the site
+const jwt = require('jsonwebtoken');
+
+// Create random string for secret
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$!+-%^*&';
+
+function generateString(length) {
+  let result = ' ';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result
+}
+
+const secret = generateString(99)
+const expiration = '2h';
+
+const user = {
+  username: 'not logged in user',
+  role: 'notLoggedIn'
+}
+
+const token = localStorage.getItem('token');
+if(token === null) {
+  console.log('from index and null')
+
+  function signToken({ username, role }) {
+    const payload = { username, role };
+    const notLoggedIn = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+
+    localStorage.setItem('token', notLoggedIn)
+    return notLoggedIn
+  }
+
+  signToken(user)
+
+}
 
 const router = createBrowserRouter([
   {
@@ -46,7 +87,7 @@ const router = createBrowserRouter([
         element: <Create />,
       },
       {
-        path: "edit/:id",
+        path: "edit/:slug",
         element: <Edit />,
       },
       {
@@ -58,6 +99,14 @@ const router = createBrowserRouter([
             element: <Posts />
           }
         ]
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
+      {
+        path: "register",
+        element: <Register />
       },
     ],
   },

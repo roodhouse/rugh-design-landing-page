@@ -14,7 +14,7 @@ const Record = (props) => (
     <td className="px-6 py-4"><img alt={props.record.title.rendered || props.record.title} src={props.record.jetpack_featured_media_url || props.record.image} /></td>
     <td className="px-6 py-4 flex flex-row justify-between">
     <Link className="text-blue-700 flex items-center" to={`/review/${props.record.slug}`}><span className="inline-block mr-1"><FaEye /></span>View</Link> |
-      <Link className="text-green-700 flex items-center" to={`/edit/${props.record._id}`}><span className="inline-block mr-1"><FaEdit /></span>Edit</Link> |
+      <Link className="text-green-700 flex items-center" to={`/edit/${props.record.slug}`}><span className="inline-block mr-1"><FaEdit /></span>Edit</Link> |
       <button className="text-red-700 flex items-center"
         onClick={() => {
           props.deleteRecord(props.record._id);

@@ -9,6 +9,7 @@ import Services from "../color/schemes/Services";
 import { Helmet } from "react-helmet-async";
 
 function Posts() {
+
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [style, setStyle] = useState(false);
@@ -51,7 +52,7 @@ function Posts() {
     }, [insta]);
 
     return null;
-  };
+  }; 
 
   setTimeout(() => {});
   const params = useParams();

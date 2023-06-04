@@ -1,35 +1,52 @@
-import React from 'react'
-import NavBar from './NavBar';
-import Menu from './Menu';
-import RecordList from '../mongoTest/recordList';
-import './styles.css'
+import React, { useEffect } from "react";
+import NavBar from "./NavBar";
+import Menu from "./Menu";
+import RecordList from "../mongoTest/recordList";
+import "./styles.css";
+import Auth from "../../utils/auth";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
-  return (
-    <div id="wrapper">
-      <NavBar />
-      <div
-        id="mainContainer"
-        className="w-full h-full min-h-[100%] flex flex-row"
-      >
-        <div
-          id="menuWrapper"
-          className="text-center text-white flex flex-col justify-center bg-[green]"
-        >
-          <Menu />
-        </div>
-        <div
-          id="recordContainer"
-          className="text-white flex flex-1 flex-col h-full bg-neutral-100"
-        >
-          <h1 className="p-4 text-xl text-[white] bg-black">Dashboard</h1>
-          <div id="postContainer" className="flex-1 bg-[gainsboro]">
-            <RecordList />
+  const navigate = useNavigate();
+  const hasAccess = Auth.getToken();
+   
+  // This useEffect hook navigates to the "/" route if the user does not have the role "admin".
+  useEffect(() => {
+    if (hasAccess.data.role !== "admin") {
+      console.log("is not admin");
+      navigate("/");
+    } 
+
+    if (hasAccess.data.role === 'admin') {
+      document.getElementById('wrapper').classList.remove('hidden');
+    }
+  },[hasAccess.data.role]);
+    
+      return (
+        <div className='hidden' id="wrapper">
+          <NavBar />
+          <div
+            id="mainContainer"
+            className="w-full h-full min-h-[100%] flex flex-row"
+          >
+            <div
+              id="menuWrapper"
+              className="text-center text-white flex flex-col justify-center bg-[green]"
+            >
+              <Menu />
+            </div>
+            <div
+              id="recordContainer"
+              className="text-white flex flex-1 flex-col h-full bg-neutral-100"
+            >
+              <h1 className="p-4 text-xl text-[white] bg-black">Dashboard</h1>
+              <div id="postContainer" className="flex-1 bg-[gainsboro]">
+                <RecordList />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+      );
 }
 
-export default Dashboard
+export default Dashboard;
