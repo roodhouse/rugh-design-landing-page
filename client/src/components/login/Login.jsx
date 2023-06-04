@@ -2,14 +2,26 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
-import env from 'react-dotenv';
 import 'animate.css';
 
 // todo: refactor token code to work in the correct places
-//       lock down other pages
+//       logout functionality
+
+// Create random string for secret
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$!+-%^*&';
+
+function generateString(length) {
+  let result = ' ';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result
+}
+
 
 const jwt = require('jsonwebtoken');
-const secret = env.JWT;
+const secret = generateString(99);
 const expiration = '2h';
 
 var bcrypt = require('bcryptjs');

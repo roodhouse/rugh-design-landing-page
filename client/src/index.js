@@ -18,11 +18,23 @@ import BlogReview from './components/blog/Review'
 import Posts from './components/blog/Posts';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
-import env from 'react-dotenv';
 
 // Create token for every user that comes to the site
 const jwt = require('jsonwebtoken');
-const secret = env.JWT;
+
+// Create random string for secret
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$!+-%^*&';
+
+function generateString(length) {
+  let result = ' ';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result
+}
+
+const secret = generateString(99)
 const expiration = '2h';
 
 const user = {
@@ -45,7 +57,6 @@ if(token === null) {
   signToken(user)
 
 }
-console.log('from index ', token)
 
 const router = createBrowserRouter([
   {
