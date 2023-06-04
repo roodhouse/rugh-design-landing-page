@@ -4,6 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
 import 'animate.css';
 
+// todo
+// 1. style login and register pages from moblie to full screen
+
 // Create random string for secret
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$!+-%^*&';
 
