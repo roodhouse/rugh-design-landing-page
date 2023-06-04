@@ -6,14 +6,11 @@ import env from 'react-dotenv';
 import 'animate.css';
 
 // todo: refactor token code to work in the correct places
-//       secure the secret - done? chage jwt secret
 //       lock down other pages
 
 const jwt = require('jsonwebtoken');
 const secret = env.JWT;
 const expiration = '2h';
-
-
 
 var bcrypt = require('bcryptjs');
 
@@ -105,7 +102,6 @@ function Login() {
                     placeholder='user name' 
                     className='w-full border border-[#676766] border-solid p-2 mb-2 order-2'
                     />
-                {/* <p id="emptyUsername">{errors.username?.message}</p> */}
                 <p id="emptyUsername">{handleEmpty()}</p>
             </div>
             <div id="password" className='w-full flex flex-col'>

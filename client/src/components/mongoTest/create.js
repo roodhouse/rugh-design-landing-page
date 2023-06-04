@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Post from '../dashboard/CreatePost'
+import Auth from "../../utils/auth";
+import Post from '../dashboard/CreatePost';
 
 export default function Create() {
+  const navigate = useNavigate();
+
+  const hasAccess = Auth.getToken();
+   
+  // This useEffect hook navigates to the "/" route if the user does not have the role "admin".
+  useEffect(() => {
+    if (hasAccess.data.role !== "admin") {
+      console.log("is not admin");
+      navigate("/");
+    } 
+  },[hasAccess.data.role]);
+
   const [form, setForm] = useState({
     name: "",
     position: "",
     level: "",
     content: "",
   });
-  const navigate = useNavigate();
+  
 
   // These methods will update the state properties.
   function updateForm(value) {

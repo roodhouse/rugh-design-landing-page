@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         element: <Create />,
       },
       {
-        path: "edit/:id",
+        path: "edit/:slug",
         element: <Edit />,
       },
       {

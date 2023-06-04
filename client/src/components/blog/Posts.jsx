@@ -9,6 +9,43 @@ import Services from "../color/schemes/Services";
 import { Helmet } from "react-helmet-async";
 
 function Posts() {
+
+  // trying to prevent the ./env.js file from being loaded and load it from the correct place 
+
+  const envScript = document.getElementById("react-dotenv");
+  window.onload = function () {
+    console.log(envScript)
+    envScript.remove()
+  }
+  // Check if the current page is a review page
+// const isReviewPage = window.location.pathname.match(/\/review\/(.*)/);
+// console.log(isReviewPage)
+//   if(isReviewPage) {
+//     envScript.setAttribute('src', '../../../public/env.js');
+//   } else {
+//     envScript.setAttribute('src', './env.js')
+//   }
+
+  // function getCurrentUrl() {
+  //   return window.location.pathname;
+  // }
+
+  // const url = getCurrentUrl();
+
+  // // console.log(url);
+
+  // const thesePosts = url.match(/\/review\/(.*)/);
+
+  // // console.log(thesePosts);
+
+  // if (thesePosts[1]) {
+  //   // console.log("something is here");
+
+  //   envScript.setAttribute("src", "../../../public/env.js");
+  //   // console.log(envScript);
+  // }
+
+
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [style, setStyle] = useState(false);

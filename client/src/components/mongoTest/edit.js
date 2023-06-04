@@ -2,8 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+import Auth from "../../utils/auth";
 
 export default function Edit() {
+  const navigate = useNavigate();
+  const hasAccess = Auth.getToken();
+   
+  // This useEffect hook navigates to the "/" route if the user does not have the role "admin".
+  useEffect(() => {
+    if (hasAccess.data.role !== "admin") {
+      console.log("is not admin");
+      navigate("/");
+    } 
+  },[hasAccess.data.role]);
 
   const [form, setForm] = useState({
     title: "",
@@ -32,8 +43,7 @@ const modules = {
 }
 
   const params = useParams();
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     async function fetchData() {
       const id = params.id.toString();
