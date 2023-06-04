@@ -4,11 +4,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router";
 import 'animate.css';
 
-// todo: refactor token code to work in the correct places
-//       logout functionality
-//       two way authinticate 
-//       flash of screen when unauthorized
-
 // Create random string for secret
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$!+-%^*&';
 

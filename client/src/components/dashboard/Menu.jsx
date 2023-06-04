@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Auth from "../../utils/auth";
 
 function Menu() {
+  function logOut() {
+    Auth.logout()
+  }
   return (
     <>
       <div
@@ -17,6 +21,9 @@ function Menu() {
           </li>
           <li>
             <a href="/posts">Posts</a>
+          </li>
+          <li>
+            <button onClick={logOut}>Logout</button>
           </li>
         </ul>
       </div>
